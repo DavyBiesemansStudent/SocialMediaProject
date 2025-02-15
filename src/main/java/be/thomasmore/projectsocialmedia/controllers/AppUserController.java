@@ -34,7 +34,7 @@ public class AppUserController {
 
     @GetMapping("/userlist")
     public String userList(Model model) {
-        model.addAttribute("pageTitle", "Users");
+        model.addAttribute("pageTitle", "Profile list");
 
         final Iterable<AppUser> appUsers = appUserRepository.findAll();
         model.addAttribute("appUsers", appUsers);
