@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 @Entity
 public class AppUser {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //auto increment id (last-used + 1)
     private int id;
 
     private String userName;
