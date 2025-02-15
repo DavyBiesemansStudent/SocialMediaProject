@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<div th:replace="~{fragments/head::head}"></div>
+
+<body class="d-flex flex-column min-vh-100">
+<div th:replace="~{fragments/header::navbar}"></div>
+
+  <div class="container flex-grow-1 ">
+    <!--POST OBJECT ADDEN-->
+    <!--FOR EACH LOOP GEBRUIKEN! (dit is nu om te testen)-->
+    <main class="container">
+      <div class="row justify-content-center">
+        <div class="col-11 mt-3 d-flex flex-column align-items-start postInfo">
+          <div class="d-flex justify-content-between w-100">
+            <p class="mb-1 ms-2 mt-1 text-start">Title</p>
+            <p class="mb-1 me-2 mt-1 text-end">Date</p>
+          </div>
+
+          <img src="/img/testimg1.webp" alt="" class="mx-auto">
+
+          <div class="d-flex justify-content-center">
+            <p class="mb-1 ms-2 mt-1 likesAndComments"><a href="#">↑</a> 150 <a href="#">↓</a></p>
+            <a href="#" class="mb-1 ms-4 mt-1 likesAndComments">Comments: 30</a>
+          </div>
+        </div>
+        <div class="mt-2 redline"></div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-11 mt-3 d-flex flex-column align-items-start postInfo">
+          <div class="d-flex justify-content-between w-100">
+            <p class="mb-1 ms-2 mt-1 text-start">Title</p>
+            <p class="mb-1 me-2 mt-1 text-end">Date</p>
+          </div>
+
+          <img src="/img/testimg2.jpg" alt="" class="mx-auto">
+
+          <div class="d-flex justify-content-center">
+            <p class="mb-1 ms-2 mt-1 likesAndComments"><a href="#">↑</a> 150 <a href="#">↓</a></p>
+            <a href="#" class="mb-1 ms-4 mt-1 likesAndComments">Comments: 30</a>
+          </div>
+        </div>
+        <div class="mt-2 redline"></div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-11 mt-3 d-flex flex-column align-items-start postInfo">
+          <div class="d-flex justify-content-between w-100">
+            <p class="mb-1 ms-2 mt-1 text-start">Title</p>
+            <p class="mb-1 me-2 mt-1 text-end">Date</p>
+          </div>
+
+          <img src="/img/testimg3.jpg" alt="" class="mx-auto">
+
+          <div class="d-flex justify-content-center">
+            <p class="mb-1 ms-2 mt-1 likesAndComments"><a href="#">↑</a> 150 <a href="#">↓</a></p>
+            <a href="#" class="mb-1 ms-4 mt-1 likesAndComments">Comments: 30</a>
+          </div>
+        </div>
+        <div class="mt-2 redline"></div>
+      </div>
+
+    </main>
+
+
+
+
+  </div>
+
+<!-- mt-auto -> push to bottom -->
+<footer class="mt-auto">
+  <div th:replace="~{fragments/footer::footer}"></div>
+</footer>
+</body>
+</html>

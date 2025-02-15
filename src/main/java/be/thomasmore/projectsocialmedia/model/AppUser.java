@@ -11,7 +11,7 @@ public class AppUser {
     private String userName;
     private String password;
 
-    @Column(length = 500)
+    @Column(length = 250)
     private String bio;
 
     private String email;

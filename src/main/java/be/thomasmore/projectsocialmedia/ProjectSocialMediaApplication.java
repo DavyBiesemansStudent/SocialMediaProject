@@ -9,7 +9,7 @@ TODO:
 -detail pagina profile
 -alles in 'My Profile' in de header laten werken
 -main feed maken
--dummy posts maken
+-detail pagina per post (comments / full img / description van de post)
 */
 
 @SpringBootApplication
