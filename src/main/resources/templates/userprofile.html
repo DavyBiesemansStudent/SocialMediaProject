@@ -1,10 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<div th:replace="~{fragments/head::head}"></div>
 
+<body class="d-flex flex-column min-vh-100">
+    <div th:replace="~{fragments/header::navbar}"></div>
+
+    <div class="container flex-grow-1 ">
+        <main class="container" th:object="${appUser}" th:if="${appUser}">
+            <div class="row d-flex justify-content-center align-items-center userInfo">
+                <div class="col-12 col-md-5 text-start textInfo">
+                    <h1 th:text="*{userName}"></h1>
+                    <p th:text="|id: *{id}|" style="opacity: 50%"></p>
+                    <h1>Bio:</h1>
+                    <p th:text="*{bio}"></p>
+                </div>
+                <div class="col-12 col-md-5 text-center imgInfo">
+                    <img th:src="*{profilePictureUrl}" alt="" class="rounded-circle">
+                </div>
+            </div>
+
+            <!-- if/unless WIP -->
+            <div class="row">
+                <div class="mt-3 text-center postInfo">
+                    <h1 class="mt-4">Deze gebruiker heeft nog geen posts gemaakt!</h1>
+                </div>
+            </div>
+        </main>
+
+
+        <main class="container m-3 d-flex justify-content-center align-items-center" th:object="${appUser}" th:unless="${appUser}">
+            <h2 style="color: white;">Geen geldige gebruiker gevonden</h2>
+        </main>
+    </div>
+
+    <!-- mt-auto -> push to bottom -->
+    <footer class="mt-auto">
+        <div th:replace="~{fragments/footer::footer}"></div>
+    </footer>
 </body>
 </html>
