@@ -8,8 +8,11 @@ TODO:
 -Wireframes aanpassen
 -detail pagina profile
 -alles in 'My Profile' in de header laten werken
--main feed maken
+-main feed maken (likes en comments laten werken)
 -detail pagina per post (comments / full img / description van de post)
+-genres/tags adden (ManyToMany)
+-comments (OneToMany)
+-likes (ManyToMany)
 */
 
 @SpringBootApplication

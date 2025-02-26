@@ -27,3 +27,18 @@ VALUES ('sports_hank', 'hankmoorepw', 'Sports enthusiast and photography lover. 
 
 INSERT INTO APP_USER (USER_NAME, PASSWORD, BIO, EMAIL, PROFILE_PICTURE_URL)
 VALUES ('natureiris', 'irisperez123', 'Animal lover and nature explorer. I enjoy hiking through forests, discovering hidden wildlife, and supporting wildlife conservation. My goal is to protect nature and inspire others to reconnect with the outdoors.', 'iris.perez@example.com', '/img/profile_pic.png');
+
+--temp
+INSERT INTO post (title, description, poster, date, likes, comment, img_Path)
+VALUES
+    ('First Post', 'This is my first post!', 'Alice', '2024-02-26', 0, 'Excited to be here!', '/img/testimg1.webp'),
+    ('Sunset View', 'Captured a beautiful sunset today.', 'Bob', '2024-02-25', 0, 'Nature is amazing!', '/img/testimg2.jpg'),
+    ('Workout Motivation', 'Hit the gym early today!', 'Charlie', '2024-02-24', 0, 'Feeling strong!', '/img/testimg3.jpg'),
+    ('Book Recommendation', 'Just finished reading an amazing book.', 'David', '2024-02-23', 0, 'Highly recommend it!', '/img/testimg1.webp'),
+    ('Coding Journey', 'Learning Java and loving it!', 'Emily', '2024-02-22', 0, 'Any tips for a beginner?', '/img/testimg2.jpg'),
+    ('Weekend Getaway', 'Had a relaxing trip to the mountains.', 'Frank', '2024-02-21', 0, 'Nature therapy!', '/img/testimg3.jpg'),
+    ('Movie Night', 'Watched an awesome movie today.', 'Grace', '2024-02-20', 0, 'What should I watch next?', '/img/testimg1.webp'),
+    ('New Recipe', 'Tried making homemade pasta today!', 'Hannah', '2024-02-19', 0, 'It turned out great!', '/img/testimg2.jpg'),
+    ('Tech News', 'Exciting updates in the AI world!', 'Ian', '2024-02-18', 0, 'The future is here!', '/img/testimg3.jpg'),
+    ('Photography Tips', 'Sharing some camera tricks.', 'Jack', '2024-02-17', 0, 'Let me know your thoughts!', '/img/testimg1.webp');
+--temp
