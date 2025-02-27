@@ -13,6 +13,7 @@ TODO:
 -genres/tags adden (ManyToMany)
 -comments (OneToMany)
 -likes (ManyToMany)
+-werken met cards naast elkaar ipv 1 grote post elke keer
 */
 
 @SpringBootApplication

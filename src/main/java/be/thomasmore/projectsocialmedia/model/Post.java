@@ -14,12 +14,11 @@ public class Post {
     private String title;
     private String description;
     private String imgPath;
+    private LocalDate date;
+    private String comment;
 
     @ManyToOne
     private AppUser poster;
-
-    private LocalDate date;
-    private String comment;
 
     @ManyToMany
     private Collection<AppUser> likedBy;
