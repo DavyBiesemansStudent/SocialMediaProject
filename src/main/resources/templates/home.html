@@ -5,6 +5,11 @@
 <body class="d-flex flex-column min-vh-100">
 <div th:replace="~{fragments/header::navbar}"></div>
 
+<div class="container text-center mt-5">
+    <h1 class="me-3" style="color: white;">Welcome user123</h1>
+    <p style="color: white">CHECK FOR LOGGED IN USER (WIP)</p>
+    <a th:href="@{/feed}" class="btn btn-primary btn-lg">Go to Feed</a>
+</div>
 
 <footer class="mt-auto">
   <div th:replace="~{fragments/footer::footer}"></div>
