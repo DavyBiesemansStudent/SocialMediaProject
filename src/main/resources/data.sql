@@ -28,6 +28,9 @@ VALUES ('sports_hank', 'hankmoorepw', 'Sports enthusiast and photography lover. 
 INSERT INTO APP_USER (USER_NAME, PASSWORD, BIO, EMAIL, PROFILE_PICTURE_URL)
 VALUES ('natureiris', 'irisperez123', 'Animal lover and nature explorer. I enjoy hiking through forests, discovering hidden wildlife, and supporting wildlife conservation. My goal is to protect nature and inspire others to reconnect with the outdoors.', 'iris.perez@example.com', '/img/profile_pic.png');
 
+INSERT INTO APP_USER (USER_NAME, PASSWORD, BIO, EMAIL, PROFILE_PICTURE_URL)
+VALUES ('techgeek25', 'securepassword123', 'Tech enthusiast with a passion for AI, machine learning, and coding. I spend my time exploring the latest technologies, programming, and contributing to open-source projects.', 'tech.geek25@example.com', '/img/profile_pic.png');
+
 --temp
 INSERT INTO post (title, description, poster_id, date, img_Path)
 VALUES
@@ -39,7 +42,8 @@ VALUES
     ('Weekend Getaway', 'Had a relaxing trip to the mountains.', 6, '2024-02-21', '/img/testimg3.jpg'),
     ('Movie Night', 'Watched an awesome movie today.', 7, '2024-02-20', '/img/testimg1.webp'),
     ('New Recipe', 'Tried making homemade pasta today!', 8, '2024-02-19', '/img/testimg2.jpg'),
-    ('Tech News', 'Exciting updates in the AI world!', 9, '2024-02-18', '/img/testimg3.jpg');
+    ('Tech News', 'Exciting updates in the AI world!', 9, '2024-02-18', '/img/testimg3.jpg'),
+    ('Exploring Quantum Computing', 'A deep dive into the future of computing with quantum mechanics.', 10, '2024-02-20', '/img/testimg3.jpg');
 --temp
 
 INSERT INTO post_liked_by (posts_liked_id, liked_by_id)
@@ -67,7 +71,9 @@ VALUES
     (8, 9),
     (9, 1),
     (9, 3),
-    (9, 6);
+    (9, 6),
+    (10, 3),
+    (10, 6);
 
 -- Post 1 (by user1)
 INSERT INTO comment (comment, app_user_id, post_id) VALUES ('This is comment #1 on post 1', 2, 1);
@@ -109,3 +115,32 @@ INSERT INTO comment (comment, app_user_id, post_id) VALUES ('This is comment #3 
 INSERT INTO comment (comment, app_user_id, post_id) VALUES ('This is comment #1 on post 9', 7, 9);
 INSERT INTO comment (comment, app_user_id, post_id) VALUES ('This is comment #2 on post 9', 6, 9);
 INSERT INTO comment (comment, app_user_id, post_id) VALUES ('This is comment #3 on post 9', 5, 9);
+
+-- Post 10 (by user10)
+INSERT INTO comment (comment, app_user_id, post_id) VALUES ('This is comment #1 on post 10', 4, 10);
+INSERT INTO comment (comment, app_user_id, post_id) VALUES ('This is comment #2 on post 10', 9, 10);
+INSERT INTO comment (comment, app_user_id, post_id) VALUES ('This is comment #3 on post 10', 2, 10);
+
+INSERT INTO TAG (name, description) VALUES ('Sports', 'Everything related to sport');
+INSERT INTO TAG (name, description) VALUES ('Technology', 'Latest trends and innovations in the tech world');
+INSERT INTO TAG (name, description) VALUES ('Music', 'Everything related to music, from genres to artists');
+INSERT INTO TAG (name, description) VALUES ('Travel', 'Explore destinations, tips, and travel experiences');
+INSERT INTO TAG (name, description) VALUES ('Food', 'Recipes, cooking tips, and culinary delights');
+INSERT INTO TAG (name, description) VALUES ('Health', 'Health tips, fitness, and mental well-being');
+INSERT INTO TAG (name, description) VALUES ('Literature', 'Everything written, books, comics and novels');
+INSERT INTO TAG (name, description) VALUES ('Film', 'Discussions about movies, shows and everything else video');
+
+
+INSERT INTO post_tags_post (posts_id, tags_post_id)
+VALUES
+    (1, 2),
+    (1, 3),
+    (2, 4),
+    (3, 6),
+    (4, 7),
+    (5, 2),
+    (6, 4),
+    (7, 8),
+    (8,5),
+    (9, 2),
+    (10, 2);

@@ -25,6 +25,16 @@ public class Post {
     @OneToMany(mappedBy = "post")
     private Collection<Comment> commentsPost;
 
+    @ManyToMany
+    private Collection<Tag> tagsPost;
+
+    public Collection<Tag> getTagsPost() {
+        return tagsPost;
+    }
+
+    public void setTagsPost(Collection<Tag> tagsPost) {
+        this.tagsPost = tagsPost;
+    }
 
     public void setImgPath(String imgPath) {
         this.imgPath = imgPath;
