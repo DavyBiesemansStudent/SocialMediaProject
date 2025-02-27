@@ -19,7 +19,7 @@
         </div>
 
         <div class="postFooter d-flex justify-content-between align-items-center">
-          <span class="postAuthor">Posted by <span th:text="${post.title}">Author</span></span>
+          <span class="postAuthor">Posted by <span th:text="${user.userName}">Author</span></span>
           <div class="d-flex align-items-center">
             <form method="post" action="/likePost" class="likeForm">
               <input type="hidden" name="postId" th:value="${post.id}">
@@ -40,9 +40,9 @@
 
           <h6>Comments</h6>
           <ul class="commentList">
-            <li th:each="comment : ${post.title}" class="comment">
-              <span class="commentAuthor"><strong>User123</strong></span>
-              <p>This is a comment text.</p>
+            <li th:each="comment : ${comments}" class="comment">
+              <span class="commentAuthor" th:text="${comment.appUser.userName}" style="font-weight: bold "></span>
+              <p th:text="${comment.comment}"></p>
             </li>
           </ul>
         </div>

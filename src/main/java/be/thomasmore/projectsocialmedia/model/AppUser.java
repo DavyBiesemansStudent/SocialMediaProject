@@ -25,6 +25,9 @@ public class AppUser {
     @OneToMany(mappedBy = "poster")
     private Collection<Post> post;
 
+    @OneToMany(mappedBy = "appUser")
+    private Collection<Comment> comments;
+
     public int getId() {
         return id;
     }
@@ -87,5 +90,13 @@ public class AppUser {
 
     public void setPost(Collection<Post> post) {
         this.post = post;
+    }
+
+    public Collection<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Collection<Comment> comments) {
+        this.comments = comments;
     }
 }

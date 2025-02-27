@@ -1,6 +1,5 @@
 package be.thomasmore.projectsocialmedia.controllers;
 
-import be.thomasmore.projectsocialmedia.model.AppUser;
 import be.thomasmore.projectsocialmedia.model.Post;
 import be.thomasmore.projectsocialmedia.repositories.AppUserRepository;
 import be.thomasmore.projectsocialmedia.repositories.PostRepository;
@@ -29,6 +28,8 @@ public class PostController {
 
         if(postFromDB.isPresent()){
             model.addAttribute("post", postFromDB.get());
+            model.addAttribute("user", postFromDB.get().getPoster());
+            model.addAttribute("comments", postFromDB.get().getCommentsPost());
         }
 
         return "postdetails";

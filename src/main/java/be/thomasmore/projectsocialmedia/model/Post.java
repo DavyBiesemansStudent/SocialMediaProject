@@ -15,13 +15,15 @@ public class Post {
     private String description;
     private String imgPath;
     private LocalDate date;
-    private String comment;
 
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.LAZY)
     private AppUser poster;
 
     @ManyToMany
     private Collection<AppUser> likedBy;
+
+    @OneToMany(mappedBy = "post")
+    private Collection<Comment> commentsPost;
 
 
     public void setImgPath(String imgPath) {
@@ -80,11 +82,11 @@ public class Post {
         this.date = date;
     }
 
-    public String getComment() {
-        return comment;
+    public Collection<Comment> getCommentsPost() {
+        return commentsPost;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setCommentsPost(Collection<Comment> commentsPost) {
+        this.commentsPost = commentsPost;
     }
 }

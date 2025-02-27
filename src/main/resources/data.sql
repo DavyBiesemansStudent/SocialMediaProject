@@ -29,17 +29,17 @@ INSERT INTO APP_USER (USER_NAME, PASSWORD, BIO, EMAIL, PROFILE_PICTURE_URL)
 VALUES ('natureiris', 'irisperez123', 'Animal lover and nature explorer. I enjoy hiking through forests, discovering hidden wildlife, and supporting wildlife conservation. My goal is to protect nature and inspire others to reconnect with the outdoors.', 'iris.perez@example.com', '/img/profile_pic.png');
 
 --temp
-INSERT INTO post (title, description, poster_id, date, comment, img_Path)
+INSERT INTO post (title, description, poster_id, date, img_Path)
 VALUES
-    ('First Post', 'This is my first post!', 1, '2024-02-26', 'Excited to be here!', '/img/testimg1.webp'),
-    ('Sunset View', 'Captured a beautiful sunset today.', 2, '2024-02-25', 'Nature is amazing!', '/img/testimg2.jpg'),
-    ('Workout Motivation', 'Hit the gym early today!', 3, '2024-02-24', 'Feeling strong!', '/img/testimg3.jpg'),
-    ('Book Recommendation', 'Just finished reading an amazing book.', 4, '2024-02-23', 'Highly recommend it!', '/img/testimg1.webp'),
-    ('Coding Journey', 'Learning Java and loving it!', 5, '2024-02-22', 'Any tips for a beginner?', '/img/testimg2.jpg'),
-    ('Weekend Getaway', 'Had a relaxing trip to the mountains.', 6, '2024-02-21', 'Nature therapy!', '/img/testimg3.jpg'),
-    ('Movie Night', 'Watched an awesome movie today.', 7, '2024-02-20', 'What should I watch next?', '/img/testimg1.webp'),
-    ('New Recipe', 'Tried making homemade pasta today!', 8, '2024-02-19', 'It turned out great!', '/img/testimg2.jpg'),
-    ('Tech News', 'Exciting updates in the AI world!', 9, '2024-02-18', 'The future is here!', '/img/testimg3.jpg');
+    ('First Post', 'This is my first post!', 1, '2024-02-26', '/img/testimg1.webp'),
+    ('Sunset View', 'Captured a beautiful sunset today.', 2, '2024-02-25', '/img/testimg2.jpg'),
+    ('Workout Motivation', 'Hit the gym early today!', 3, '2024-02-24', '/img/testimg3.jpg'),
+    ('Book Recommendation', 'Just finished reading an amazing book.', 4, '2024-02-23', '/img/testimg1.webp'),
+    ('Coding Journey', 'Learning Java and loving it!', 5, '2024-02-22', '/img/testimg2.jpg'),
+    ('Weekend Getaway', 'Had a relaxing trip to the mountains.', 6, '2024-02-21', '/img/testimg3.jpg'),
+    ('Movie Night', 'Watched an awesome movie today.', 7, '2024-02-20', '/img/testimg1.webp'),
+    ('New Recipe', 'Tried making homemade pasta today!', 8, '2024-02-19', '/img/testimg2.jpg'),
+    ('Tech News', 'Exciting updates in the AI world!', 9, '2024-02-18', '/img/testimg3.jpg');
 --temp
 
 INSERT INTO post_liked_by (posts_liked_id, liked_by_id)
@@ -68,3 +68,44 @@ VALUES
     (9, 1),
     (9, 3),
     (9, 6);
+
+-- Post 1 (by user1)
+INSERT INTO comment (comment, app_user_id, post_id) VALUES ('This is comment #1 on post 1', 2, 1);
+INSERT INTO comment (comment, app_user_id, post_id) VALUES ('This is comment #2 on post 1', 3, 1);
+
+-- Post 2 (by user2)
+INSERT INTO comment (comment, app_user_id, post_id) VALUES ('This is comment #1 on post 2', 5, 2);
+INSERT INTO comment (comment, app_user_id, post_id) VALUES ('This is comment #2 on post 2', 6, 2);
+INSERT INTO comment (comment, app_user_id, post_id) VALUES ('This is comment #3 on post 2', 1, 2);
+
+-- Post 3 (by user3)
+INSERT INTO comment (comment, app_user_id, post_id) VALUES ('This is comment #1 on post 3', 4, 3);
+INSERT INTO comment (comment, app_user_id, post_id) VALUES ('This is comment #2 on post 3', 7, 3);
+INSERT INTO comment (comment, app_user_id, post_id) VALUES ('This is comment #3 on post 3', 8, 3);
+
+-- Post 4 (by user4)
+INSERT INTO comment (comment, app_user_id, post_id) VALUES ('This is comment #1 on post 4', 3, 4);
+INSERT INTO comment (comment, app_user_id, post_id) VALUES ('This is comment #2 on post 4', 9, 4);
+
+-- Post 5 (by user5)
+INSERT INTO comment (comment, app_user_id, post_id) VALUES ('This is comment #1 on post 5', 2, 5);
+INSERT INTO comment (comment, app_user_id, post_id) VALUES ('This is comment #2 on post 5', 6, 5);
+
+-- Post 6 (by user6)
+INSERT INTO comment (comment, app_user_id, post_id) VALUES ('This is comment #1 on post 6', 4, 6);
+INSERT INTO comment (comment, app_user_id, post_id) VALUES ('This is comment #2 on post 6', 7, 6);
+INSERT INTO comment (comment, app_user_id, post_id) VALUES ('This is comment #3 on post 6', 8, 6);
+
+-- Post 7 (by user7)
+INSERT INTO comment (comment, app_user_id, post_id) VALUES ('This is comment #1 on post 7', 5, 7);
+INSERT INTO comment (comment, app_user_id, post_id) VALUES ('This is comment #2 on post 7', 2, 7);
+
+-- Post 8 (by user8)
+INSERT INTO comment (comment, app_user_id, post_id) VALUES ('This is comment #1 on post 8', 3, 8);
+INSERT INTO comment (comment, app_user_id, post_id) VALUES ('This is comment #2 on post 8', 4, 8);
+INSERT INTO comment (comment, app_user_id, post_id) VALUES ('This is comment #3 on post 8', 1, 8);
+
+-- Post 9 (by user9)
+INSERT INTO comment (comment, app_user_id, post_id) VALUES ('This is comment #1 on post 9', 7, 9);
+INSERT INTO comment (comment, app_user_id, post_id) VALUES ('This is comment #2 on post 9', 6, 9);
+INSERT INTO comment (comment, app_user_id, post_id) VALUES ('This is comment #3 on post 9', 5, 9);
