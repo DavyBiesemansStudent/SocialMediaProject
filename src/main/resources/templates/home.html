@@ -21,7 +21,9 @@
               <a href="#" style="text-decoration: none; color: white" >↑</a>
               <span th:text="${post.likedBy.size}"></span>
             </p>
-            <a th:href="@{|/postdetails/*{post.id}|}" class="mb-1 ms-4 mt-1 likesAndComments">Comments: 1</a>
+            <a th:href="@{|/postdetails/*{post.id}|}" style="text-decoration: none; color: white"
+               class="mb-1 ms-4 mt-1 likesAndComments">Comments: 1
+            </a>
           </div>
           <div class="mt-2 redline"></div>
         </div>
