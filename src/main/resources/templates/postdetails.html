@@ -48,7 +48,7 @@
             <button type="submit" class="btn btn-sm btn-primary mb-1">Post Comment</button>
           </form>
 
-          <h6>Comments</h6>
+          <h6 th:text="|Comments: (${comments.size()})|"></h6>
           <ul class="commentList">
             <li th:each="comment : ${comments}" class="comment">
               <a th:href="@{|/userprofile/*{comment.appUser.id}|}" th:text="${comment.appUser.userName}" style="font-weight: bold "></a>
