@@ -6,12 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /*
 TODO:
 -Wireframes aanpassen
--detail pagina profile
 -alles in 'My Profile' in de header laten werken
 -genres/tags adden (ManyToMany + detail pagina waarin je uitlegt wat het inhoud)
--comments (OneToMany)
--likes (ManyToMany)
--werken met cards naast elkaar ipv 1 grote post elke keer
+-likes en comments laten werken
 */
 
 @SpringBootApplication
