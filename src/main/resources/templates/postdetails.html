@@ -16,7 +16,9 @@
             <h5 class="m-0" th:text="${post.title}">Post Title</h5>
             <span class="postDate" th:text="${post.date}">24 Feb 2025</span>
           </div>
-
+          <p class="mb-0">
+            <span th:each="tag : ${post.tagsPost}" th:class="'tag-' + ${tag.name.toLowerCase()}" th:text="|${tag.name} |"></span>
+          </p>
           <div class="postImage">
             <img th:src="${post.imgPath}" alt="Post Image" class="img-fluid">
           </div>

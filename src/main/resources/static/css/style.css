@@ -82,7 +82,7 @@ body {
 /*POST*/
 
 /* HOME */
-.homeCards{
+.feedCards{
     background-color: #451800;
     color: white;
 }
@@ -91,7 +91,7 @@ body {
     color: white;
 }
 
-.homeCards img{
+.feedCards img{
     width: 100%;
     max-height: 400px;
     object-fit: contain;

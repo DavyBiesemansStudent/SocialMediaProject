@@ -9,6 +9,7 @@ TODO:
 -alles in 'My Profile' in de header laten werken
 -genres/tags adden (ManyToMany + detail pagina waarin je uitlegt wat het inhoud)
 -likes en comments laten werken
+-format date
 */
 
 @SpringBootApplication

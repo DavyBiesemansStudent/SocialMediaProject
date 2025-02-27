@@ -27,16 +27,18 @@
                     <div class="row">
                         <h2 style="color: white">Recent posts:</h2>
                         <div class="col-12 col-md-4 mb-4" th:each="post : ${userPosts}">
-                            <a th:href="@{|/postdetails/${post.id}|}" class="text-decoration-none text-dark">
-                                <div class="homeCards card">
+                            <a th:href="@{|/postdetails/${post.id}|}" class="text-decoration-none">
+                                <div class="feedCards card">
                                     <img th:src="${post.imgPath}" alt="Post Image" class="card-img-top">
 
                                     <div class="card-body">
                                         <h5 class="card-title" th:text="${post.title}"></h5>
-                                        <p class="mb-0">genres</p>
+                                        <p class="mb-0">
+                                            <span th:each="tag : ${post.tagsPost}" th:class="'tag-' + ${tag.name.toLowerCase()}" th:text="|${tag.name} |"></span>
+                                        </p>
                                     </div>
 
-                                    <div class="card-footer text-muted d-flex justify-content-between">
+                                    <div class="card-footer d-flex justify-content-between">
                                         <span th:text="${post.date}"></span>
                                         <div>
                                             <span th:text="|Likes ${post.likedBy.size} -|"></span>

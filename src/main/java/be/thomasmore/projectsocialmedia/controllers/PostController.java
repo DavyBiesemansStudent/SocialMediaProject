@@ -34,4 +34,13 @@ public class PostController {
 
         return "postdetails";
     }
+
+    @GetMapping("/feed")
+    public String home(Model model) {
+
+        final Iterable<Post> posts = postRepository.findAll();
+        model.addAttribute("posts", posts);
+
+        return "feed";
+    }
 }
