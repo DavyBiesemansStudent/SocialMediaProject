@@ -6,60 +6,69 @@
 <div th:replace="~{fragments/header::navbar}"></div>
 
 <div class="container py-4">
-  <div class="row justify-content-center">
-    <div class="col-lg-7 col-md-8 col-sm-10">
-      <div class="postCard">
+  <main th:if="${post}">
+    <div class="row justify-content-center">
+      <div class="col-lg-7 col-md-8 col-sm-10">
+        <div class="postCard">
 
-        <!-- Content -->
-        <div class="postHeader d-flex justify-content-between align-items-center">
-          <h5 class="m-0" th:text="${post.title}">Post Title</h5>
-          <span class="postDate" th:text="${post.date}">24 Feb 2025</span>
-        </div>
+          <!-- Content -->
+          <div class="postHeader d-flex justify-content-between align-items-center">
+            <h5 class="m-0" th:text="${post.title}">Post Title</h5>
+            <span class="postDate" th:text="${post.date}">24 Feb 2025</span>
+          </div>
 
-        <div class="postImage">
-          <img th:src="${post.imgPath}" alt="Post Image" class="img-fluid">
-        </div>
+          <div class="postImage">
+            <img th:src="${post.imgPath}" alt="Post Image" class="img-fluid">
+          </div>
 
-        <div class="postDescription mt-2">
-          <p th:text="${post.description}">This is an example description of the post. It provides extra information.</p>
-        </div>
+          <div class="postDescription mt-2">
+            <p th:text="${post.description}">This is an example description of the post. It provides extra information.</p>
+          </div>
 
-        <div class="postFooter d-flex justify-content-between align-items-center">
+          <div class="postFooter d-flex justify-content-between align-items-center">
           <span class="postAuthor">Posted by
             <a th:href="@{|/userprofile/*{user.id}|}" th:text="${user.userName}"></a>
           </span>
 
-          <!-- Like button-->
-          <div class="d-flex align-items-center">
-            <form method="post" action="/likePost" class="likeForm">
-              <input type="hidden" name="postId" th:value="${post.id}">
-              <button type="submit" class="btn btn-sm btn-outline-danger likeButton">Like</button>
-            </form>
-            <span class="likeCounter ms-2" th:text="${post.likedBy.size()}">0</span>
-          </div>
-        </div>
-
-        <!-- Comments Section -->
-        <div class="commentsSection">
-          <form method="post" action="/addComment" class="commentForm">
-            <div class="mb-3">
-              <textarea name="commentText" class="form-control" placeholder="Add a comment..." rows="2" required></textarea>
+            <!-- Like button-->
+            <div class="d-flex align-items-center">
+              <form method="post" action="/likePost" class="likeForm">
+                <input type="hidden" name="postId" th:value="${post.id}">
+                <button type="submit" class="btn btn-sm btn-outline-danger likeButton">Like</button>
+              </form>
+              <span class="likeCounter ms-2" th:text="${post.likedBy.size()}">0</span>
             </div>
-            <button type="submit" class="btn btn-sm btn-primary mb-1">Post Comment</button>
-          </form>
+          </div>
 
-          <h6 th:text="|Comments: (${comments.size()})|"></h6>
-          <ul class="commentList">
-            <li th:each="comment : ${comments}" class="comment">
-              <a th:href="@{|/userprofile/*{comment.appUser.id}|}" th:text="${comment.appUser.userName}" style="font-weight: bold "></a>
-              <p th:text="${comment.comment}"></p>
-            </li>
-          </ul>
+          <!-- Comments Section -->
+          <div class="commentsSection">
+            <form method="post" action="/addComment" class="commentForm">
+              <div class="mb-3">
+                <textarea name="commentText" class="form-control" placeholder="Add a comment..." rows="2" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-sm btn-primary mb-1">Post Comment</button>
+            </form>
+
+            <h6 th:text="|Comments: (${comments.size()})|"></h6>
+            <ul class="commentList">
+              <li th:each="comment : ${comments}" class="comment">
+                <a th:href="@{|/userprofile/*{comment.appUser.id}|}" th:text="${comment.appUser.userName}" style="font-weight: bold "></a>
+                <p th:text="${comment.comment}"></p>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </main>
 </div>
+
+<main th:unless="${post}">
+  <div class="container text-center">
+    <h2 style="color: white;">Geen geldige post gevonden</h2>
+  </div>
+</main>
+
 
 <footer class="mt-auto">
   <div th:replace="~{fragments/footer::footer}"></div>

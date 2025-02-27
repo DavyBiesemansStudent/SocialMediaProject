@@ -8,9 +8,7 @@ TODO:
 -Wireframes aanpassen
 -detail pagina profile
 -alles in 'My Profile' in de header laten werken
--main feed maken (likes en comments laten werken)
--detail pagina per post (comments / full img / description van de post)
--genres/tags adden (ManyToMany)
+-genres/tags adden (ManyToMany + detail pagina waarin je uitlegt wat het inhoud)
 -comments (OneToMany)
 -likes (ManyToMany)
 -werken met cards naast elkaar ipv 1 grote post elke keer
