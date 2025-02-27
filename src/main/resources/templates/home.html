@@ -18,7 +18,7 @@
 
           <div class="d-flex justify-content-center">
             <p class="mb-1 ms-2 mt-1 likesAndComments">
-              <a href="#">↑</a><span>0</span><a href="#">↓</a>
+              <a href="#">↑</a><span th:text="${post.likedBy.size}"></span><a href="#">↓</a>
             </p>
             <a href="#" class="mb-1 ms-4 mt-1 likesAndComments">Comments: 1</a>
           </div>
