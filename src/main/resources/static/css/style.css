@@ -93,6 +93,11 @@ body {
     overflow-wrap: break-word;
 }
 
+.postDescription p{
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
 .likesAndComments{
     background-color: #863103;
     border-radius: 1rem;

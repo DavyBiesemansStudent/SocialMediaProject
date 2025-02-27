@@ -18,6 +18,10 @@
           <img th:src="${post.imgPath}" alt="Post Image" class="img-fluid">
         </div>
 
+        <div class="postDescription mt-2">
+          <p th:text="${post.description}">This is an example description of the post. It provides extra information.</p>
+        </div>
+
         <div class="postFooter d-flex justify-content-between align-items-center">
           <span class="postAuthor">Posted by <span th:text="${user.userName}">Author</span></span>
           <div class="d-flex align-items-center">
