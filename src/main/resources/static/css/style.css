@@ -21,30 +21,6 @@ body {
 }
 /*PROFILE PAGE*/
 
-.postInfo {
-    max-height: 750px; /* Maximum container height */
-    background-color: #451800;
-    border-radius: 1rem;
-    color: rgba(255, 255, 255, 0.75);
-    padding: 1rem; /* Optional: for spacing */
-    display: flex;
-    flex-direction: column;
-    gap: 1rem; /* Space between title and image */
-    width: 100%; /* Respect col-10 width */
-    overflow: hidden; /* Prevent overflow if content exceeds max-height */
-}
-
-.postInfo img {
-    width: 100%; /* Always fill width */
-    max-height: 100%; /* Image won't exceed the container height */
-    object-fit: contain; /* Maintain aspect ratio without cropping */
-    background-color: #381502;
-    border-radius: 1rem;
-    border: solid 0.7rem #863103;
-    align-self: center; /* Center image if smaller than container */
-}
-
-
 /*POST*/
 
 .postCard {
@@ -98,8 +74,6 @@ body {
     overflow-wrap: break-word;
 }
 
-.commentList a
-
 .postDescription p{
     word-wrap: break-word;
     overflow-wrap: break-word;
@@ -107,6 +81,16 @@ body {
 
 /*POST*/
 
+/* HOME */
+.homeCards img{
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    border-radius: 0.5rem;
+    background-color: #381502;
+    border: 0.4rem solid #863103;
+}
+/* HOME */
 @media screen and (max-width: 765px){
     .imgInfo img{
         margin: 4% 0;

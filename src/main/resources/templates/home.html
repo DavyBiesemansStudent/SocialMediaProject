@@ -5,35 +5,32 @@
 <body class="d-flex flex-column min-vh-100">
 <div th:replace="~{fragments/header::navbar}"></div>
 
-  <div class="container flex-grow-1 ">
-    <main class="container">
-      <div class="row justify-content-center">
-        <div th:each="post : ${posts}" class="col-11 mt-3 d-flex flex-column align-items-start postInfo">
-          <div class="d-flex justify-content-between w-100">
-            <p class="mb-1 ms-2 mt-1 text-start" th:text="${post.title}">Title</p>
-            <p class="mb-1 me-2 mt-1 text-end" th:text="${post.date}">Date</p>
+<div class="container py-4 flex-grow-1">
+  <main class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-4 mb-4" th:each="post : ${posts}">
+        <a th:href="@{|/postdetails/*{post.id}|}" class="text-decoration-none text-dark">
+          <!-- Start of Card -->
+          <div class="homeCards card">
+            <img th:src="${post.imgPath}" alt="Post Image" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title" th:text="${post.title}">Title</h5>
+            </div>
+            <div class="card-footer text-muted d-flex justify-content-between">
+              <span th:text="${post.date}">Date</span>
+              <div>
+                <span th:text="|Likes ${post.likedBy.size} -|"></span>
+                <span th:text="|Comments: ${post.commentsPost.size()}|"></span>
+              </div>
+            </div>
           </div>
-
-          <img th:src="${post.imgPath}" alt="Post Image" class="mx-auto">
-
-          <div class="d-flex justify-content-center">
-            <p class="mb-1 ms-2 mt-1 likesAndComments">
-              <a href="#" style="text-decoration: none; color: white" >↑</a>
-              <span th:text="${post.likedBy.size}"></span>
-            </p>
-            <a th:href="@{|/postdetails/*{post.id}|}" style="text-decoration: none; color: white"
-               class="mb-1 ms-4 mt-1 likesAndComments">Comments: 1
-            </a>
-          </div>
-          <div class="mt-2 redline"></div>
-        </div>
+          <!-- End of Card -->
+        </a>
       </div>
+    </div>
+  </main>
+</div>
 
-    </main>
-
-  </div>
-
-<!-- mt-auto -> push to bottom -->
 <footer class="mt-auto">
   <div th:replace="~{fragments/footer::footer}"></div>
 </footer>
