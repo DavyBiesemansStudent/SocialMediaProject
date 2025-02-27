@@ -99,6 +99,53 @@ body {
     background-color: #381502;
     border: 0.4rem solid #863103;
 }
+
+.tag-film,
+.tag-food,
+.tag-health,
+.tag-literature,
+.tag-music,
+.tag-sports,
+.tag-technology,
+.tag-travel{
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-right: 5px;
+    font-size: 0.9rem;
+}
+
+.tag-sports{
+    background-color: orange;
+}
+
+.tag-travel{
+    background-color: #032e03;
+}
+
+.tag-technology{
+    background-color: black ;
+}
+
+.tag-music{
+    background-color: #78521c;
+}
+
+.tag-food{
+    background-color: red;
+}
+
+.tag-health{
+    background-color: green;
+}
+
+.tag-literature{
+    background-color: blueviolet;
+}
+
+.tag-film{
+    background-color: darkblue;
+}
+
 /* HOME */
 @media screen and (max-width: 765px){
     .imgInfo img{

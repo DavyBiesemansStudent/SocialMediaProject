@@ -15,8 +15,10 @@ public class HomeController {
 
     @GetMapping({"/home","/"})
     public String home(Model model) {
+
         final Iterable<Post> posts = postRepository.findAll();
         model.addAttribute("posts", posts);
+
         return "home";
     }
 
