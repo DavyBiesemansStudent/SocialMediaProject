@@ -9,6 +9,8 @@
   <div class="row justify-content-center">
     <div class="col-lg-6 col-md-8 col-sm-10">
       <div class="postCard">
+
+        <!-- Content -->
         <div class="postHeader d-flex justify-content-between align-items-center">
           <h5 class="m-0" th:text="${post.title}">Post Title</h5>
           <span class="postDate" th:text="${post.date}">24 Feb 2025</span>
@@ -23,7 +25,11 @@
         </div>
 
         <div class="postFooter d-flex justify-content-between align-items-center">
-          <span class="postAuthor">Posted by <span th:text="${user.userName}">Author</span></span>
+          <span class="postAuthor">Posted by
+            <a th:href="@{|/userprofile/*{user.id}|}" th:text="${user.userName}"></a>
+          </span>
+
+          <!-- Like button-->
           <div class="d-flex align-items-center">
             <form method="post" action="/likePost" class="likeForm">
               <input type="hidden" name="postId" th:value="${post.id}">
