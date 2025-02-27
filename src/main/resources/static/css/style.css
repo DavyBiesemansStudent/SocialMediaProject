@@ -24,7 +24,7 @@ body {
 /*POST*/
 
 .postCard {
-    background-color: #451800; /* Dark Reddit-style background */
+    background-color: #451800;
     border-radius: 1rem;
     padding: 1rem;
     color: rgba(255, 255, 255, 0.85);
@@ -82,6 +82,15 @@ body {
 /*POST*/
 
 /* HOME */
+.homeCards{
+    background-color: #451800;
+    color: white;
+}
+
+.card-footer span{
+    color: white;
+}
+
 .homeCards img{
     width: 100%;
     max-height: 400px;
