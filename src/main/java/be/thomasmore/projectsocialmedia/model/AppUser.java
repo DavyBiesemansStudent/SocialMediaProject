@@ -2,6 +2,8 @@ package be.thomasmore.projectsocialmedia.model;
 
 import jakarta.persistence.*;
 
+import java.util.Collection;
+
 @Entity
 public class AppUser {
     @Id
@@ -16,6 +18,12 @@ public class AppUser {
 
     private String email;
     private String profilePictureUrl;
+
+    @ManyToMany(mappedBy = "likedBy")
+    private Collection<Post> postsLiked;
+
+    @OneToMany(mappedBy = "poster")
+    private Collection<Post> post;
 
     public int getId() {
         return id;
@@ -63,5 +71,21 @@ public class AppUser {
 
     public void setProfilePictureUrl(String profilePictureUrl) {
         this.profilePictureUrl = profilePictureUrl;
+    }
+
+    public Collection<Post> getLikes() {
+        return postsLiked;
+    }
+
+    public void setLikes(Collection<Post> posts) {
+        this.postsLiked = posts;
+    }
+
+    public Collection<Post> getPost() {
+        return post;
+    }
+
+    public void setPost(Collection<Post> post) {
+        this.post = post;
     }
 }

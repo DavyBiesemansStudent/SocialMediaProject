@@ -29,16 +29,42 @@ INSERT INTO APP_USER (USER_NAME, PASSWORD, BIO, EMAIL, PROFILE_PICTURE_URL)
 VALUES ('natureiris', 'irisperez123', 'Animal lover and nature explorer. I enjoy hiking through forests, discovering hidden wildlife, and supporting wildlife conservation. My goal is to protect nature and inspire others to reconnect with the outdoors.', 'iris.perez@example.com', '/img/profile_pic.png');
 
 --temp
-INSERT INTO post (title, description, poster, date, likes, comment, img_Path)
+INSERT INTO post (title, description, poster_id, date, comment, img_Path)
 VALUES
-    ('First Post', 'This is my first post!', 'Alice', '2024-02-26', 0, 'Excited to be here!', '/img/testimg1.webp'),
-    ('Sunset View', 'Captured a beautiful sunset today.', 'Bob', '2024-02-25', 0, 'Nature is amazing!', '/img/testimg2.jpg'),
-    ('Workout Motivation', 'Hit the gym early today!', 'Charlie', '2024-02-24', 0, 'Feeling strong!', '/img/testimg3.jpg'),
-    ('Book Recommendation', 'Just finished reading an amazing book.', 'David', '2024-02-23', 0, 'Highly recommend it!', '/img/testimg1.webp'),
-    ('Coding Journey', 'Learning Java and loving it!', 'Emily', '2024-02-22', 0, 'Any tips for a beginner?', '/img/testimg2.jpg'),
-    ('Weekend Getaway', 'Had a relaxing trip to the mountains.', 'Frank', '2024-02-21', 0, 'Nature therapy!', '/img/testimg3.jpg'),
-    ('Movie Night', 'Watched an awesome movie today.', 'Grace', '2024-02-20', 0, 'What should I watch next?', '/img/testimg1.webp'),
-    ('New Recipe', 'Tried making homemade pasta today!', 'Hannah', '2024-02-19', 0, 'It turned out great!', '/img/testimg2.jpg'),
-    ('Tech News', 'Exciting updates in the AI world!', 'Ian', '2024-02-18', 0, 'The future is here!', '/img/testimg3.jpg'),
-    ('Photography Tips', 'Sharing some camera tricks.', 'Jack', '2024-02-17', 0, 'Let me know your thoughts!', '/img/testimg1.webp');
+    ('First Post', 'This is my first post!', 1, '2024-02-26', 'Excited to be here!', '/img/testimg1.webp'),
+    ('Sunset View', 'Captured a beautiful sunset today.', 2, '2024-02-25', 'Nature is amazing!', '/img/testimg2.jpg'),
+    ('Workout Motivation', 'Hit the gym early today!', 3, '2024-02-24', 'Feeling strong!', '/img/testimg3.jpg'),
+    ('Book Recommendation', 'Just finished reading an amazing book.', 4, '2024-02-23', 'Highly recommend it!', '/img/testimg1.webp'),
+    ('Coding Journey', 'Learning Java and loving it!', 5, '2024-02-22', 'Any tips for a beginner?', '/img/testimg2.jpg'),
+    ('Weekend Getaway', 'Had a relaxing trip to the mountains.', 6, '2024-02-21', 'Nature therapy!', '/img/testimg3.jpg'),
+    ('Movie Night', 'Watched an awesome movie today.', 7, '2024-02-20', 'What should I watch next?', '/img/testimg1.webp'),
+    ('New Recipe', 'Tried making homemade pasta today!', 8, '2024-02-19', 'It turned out great!', '/img/testimg2.jpg'),
+    ('Tech News', 'Exciting updates in the AI world!', 9, '2024-02-18', 'The future is here!', '/img/testimg3.jpg');
 --temp
+
+INSERT INTO post_liked_by (posts_liked_id, liked_by_id)
+VALUES
+    (1, 2),
+    (1, 3),
+    (1, 5),
+    (2, 1),
+    (2, 4),
+    (2, 6),
+    (3, 7),
+    (3, 8),
+    (3, 9),
+    (4, 2),
+    (4, 8),
+    (4, 9),
+    (5, 1),
+    (5, 4),
+    (5, 6),
+    (6, 3),
+    (6, 7),
+    (7, 2),
+    (7, 5),
+    (8, 8),
+    (8, 9),
+    (9, 1),
+    (9, 3),
+    (9, 6);

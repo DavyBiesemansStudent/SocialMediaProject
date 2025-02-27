@@ -1,11 +1,9 @@
 package be.thomasmore.projectsocialmedia.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.Collection;
 
 @Entity
 public class Post {
@@ -17,20 +15,22 @@ public class Post {
     private String description;
     private String imgPath;
 
-    //temp
-    private String poster;
+    @ManyToOne
+    private AppUser poster;
 
     private LocalDate date;
-    private int likes = 0;
     private String comment;
 
+    @ManyToMany
+    private Collection<AppUser> likedBy;
 
-    public String getImgPath() {
-        return imgPath;
-    }
 
     public void setImgPath(String imgPath) {
         this.imgPath = imgPath;
+    }
+
+    public String getImgPath() {
+        return imgPath;
     }
 
     public Integer getId() {
@@ -57,12 +57,20 @@ public class Post {
         this.description = description;
     }
 
-    public String getPoster() {
+    public AppUser getPoster() {
         return poster;
     }
 
-    public void setPoster(String poster) {
+    public void setPoster(AppUser poster) {
         this.poster = poster;
+    }
+
+    public Collection<AppUser> getLikedBy() {
+        return likedBy;
+    }
+
+    public void setLikedBy(Collection<AppUser> likedBy) {
+        this.likedBy = likedBy;
     }
 
     public LocalDate getDate() {
@@ -71,14 +79,6 @@ public class Post {
 
     public void setDate(LocalDate date) {
         this.date = date;
-    }
-
-    public int getLikes() {
-        return likes;
-    }
-
-    public void setLikes(int likes) {
-        this.likes = likes;
     }
 
     public String getComment() {
