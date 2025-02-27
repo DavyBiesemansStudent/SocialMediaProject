@@ -78,7 +78,7 @@ body {
     border: 0.4rem solid #863103;
 }
 
-.postAuthor a{
+.postAuthor a, .commentList a{
     text-decoration: underline;
     color: white
 }
@@ -97,6 +97,8 @@ body {
     word-wrap: break-word; /* This will break long words */
     overflow-wrap: break-word;
 }
+
+.commentList a
 
 .postDescription p{
     word-wrap: break-word;

@@ -51,7 +51,7 @@
           <h6>Comments</h6>
           <ul class="commentList">
             <li th:each="comment : ${comments}" class="comment">
-              <span class="commentAuthor" th:text="${comment.appUser.userName}" style="font-weight: bold "></span>
+              <a th:href="@{|/userprofile/*{comment.appUser.id}|}" th:text="${comment.appUser.userName}" style="font-weight: bold "></a>
               <p th:text="${comment.comment}"></p>
             </li>
           </ul>
