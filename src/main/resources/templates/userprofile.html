@@ -21,7 +21,7 @@
 
         <div class="row">
             <div class="mt-3 text-start postInfo">
-                <h1 th:if="${#lists.isEmpty(userPosts)}">This user hasn't made any posts yet</h1>
+                <h1 th:if="${#lists.isEmpty(userPosts)}" style="color: white" class="text-center" >This user hasn't made any posts yet</h1>
 
                 <div th:unless="${#lists.isEmpty(userPosts)}">
                     <div class="row">
