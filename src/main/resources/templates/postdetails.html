@@ -14,7 +14,7 @@
           <!-- Content -->
           <div class="postHeader d-flex justify-content-between align-items-center">
             <h5 class="m-0" th:text="${post.title}">Post Title</h5>
-            <span class="postDate" th:text="${post.date}">24 Feb 2025</span>
+            <span class="postDate" th:text="${post.date}">2024-02-20</span>
           </div>
           <p class="mb-0">
             <span th:each="tag : ${post.tagsPost}" th:class="'tag-' + ${tag.name.toLowerCase()}" th:text="|${tag.name} |"></span>
@@ -24,7 +24,7 @@
           </div>
 
           <div class="postDescription mt-2">
-            <p th:text="${post.description}">This is an example description of the post. It provides extra information.</p>
+            <p th:text="${post.description}">This is an example description of the post.</p>
           </div>
 
           <div class="postFooter d-flex justify-content-between align-items-center">
