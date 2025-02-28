@@ -7,6 +7,99 @@
 
 <div class="container py-4 flex-grow-1">
   <main>
+    <div class="container py-4">
+      <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#filterModal">
+        Filter Posts
+      </button>
+    </div>
+
+    <!-- Modal for Filters -->
+    <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="filterModalLabel">Filter Posts</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <!-- Start of the Form -->
+            <!-- Change the form method to GET so it sends data via URL parameters -->
+            <form id="filterForm" action="/feed" method="get">
+              <!-- Title Filter -->
+              <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" name="title" placeholder="Enter title">
+              </div>
+
+              <!-- Description Filter -->
+              <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <input type="text" class="form-control" id="description" name="description" placeholder="Enter description">
+              </div>
+
+              <!-- Tag Filter (Radio Buttons) -->
+              <div class="mb-3">
+                <label class="form-label">Tag</label>
+                <div>
+                  <input type="radio" id="tagSports" name="tag" value="Sports">
+                  <label for="tagSports">Sports</label>
+                </div>
+                <div>
+                  <input type="radio" id="tagTechnology" name="tag" value="Technology">
+                  <label for="tagTechnology">Technology</label>
+                </div>
+                <div>
+                  <input type="radio" id="tagMusic" name="tag" value="Music">
+                  <label for="tagMusic">Music</label>
+                </div>
+                <div>
+                  <input type="radio" id="tagTravel" name="tag" value="Travel">
+                  <label for="tagTravel">Travel</label>
+                </div>
+                <div>
+                  <input type="radio" id="tagFood" name="tag" value="Food">
+                  <label for="tagFood">Food</label>
+                </div>
+                <div>
+                  <input type="radio" id="tagHealth" name="tag" value="Health">
+                  <label for="tagHealth">Health</label>
+                </div>
+                <div>
+                  <input type="radio" id="tagLiterature" name="tag" value="Literature">
+                  <label for="tagLiterature">Literature</label>
+                </div>
+                <div>
+                  <input type="radio" id="tagFilm" name="tag" value="Film">
+                  <label for="tagFilm">Film</label>
+                </div>
+              </div>
+
+              <!-- Date Filter -->
+              <div class="mb-3">
+                <label for="date" class="form-label">Date</label>
+                <input type="date" class="form-control" id="date" name="date">
+              </div>
+
+              <!-- Likes Range Filter -->
+              <div class="mb-3">
+                <label for="minLikes" class="form-label">Min Likes</label>
+                <input type="number" class="form-control" id="minLikes" name="minLikes">
+              </div>
+              <div class="mb-3">
+                <label for="maxLikes" class="form-label">Max Likes</label>
+                <input type="number" class="form-control" id="maxLikes" name="maxLikes">
+              </div>
+
+              <button type="submit" class="btn btn-primary">Apply Filters</button>
+            </form>
+
+            <!-- End of the Form -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+
     <div class="row justify-content-center">
       <div class="col-12 col-md-4 mb-4" th:each="post : ${posts}">
         <a th:href="@{|/postdetails/*{post.id}|}" class="text-decoration-none text-dark">
