@@ -52,11 +52,10 @@ public class PostController {
             parsedDate = LocalDate.parse(date);  // Parse the date
         }
 
-        // Call repository with parameters
-        List<Post> filteredPosts = postRepository.findByFilter(title, description, tag, parsedDate, minLikes, maxLikes);
+        final Iterable<Post> posts = postRepository.findByFilter(title, description, tag, parsedDate, minLikes, maxLikes);
 
-        model.addAttribute("posts", filteredPosts);
-        return "feed";  // Return the page to display filtered posts
+        model.addAttribute("posts", posts);
+        return "feed";
     }
 
 }

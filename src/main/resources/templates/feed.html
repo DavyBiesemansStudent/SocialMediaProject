@@ -13,7 +13,6 @@
       </button>
     </div>
 
-    <!-- Modal for Filters -->
     <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -23,18 +22,17 @@
           </div>
           <div class="modal-body">
             <!-- Start of the Form -->
-            <!-- Change the form method to GET so it sends data via URL parameters -->
             <form id="filterForm" action="/feed" method="get">
               <!-- Title Filter -->
               <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
-                <input type="text" class="form-control" id="title" name="title" placeholder="Enter title">
+                <input type="text"  class="form-control" id="title" name="title" placeholder="Enter title" aria-label="title">
               </div>
 
               <!-- Description Filter -->
               <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
-                <input type="text" class="form-control" id="description" name="description" placeholder="Enter description">
+                <input type="text" class="form-control" id="description" name="description" placeholder="Enter description" aria-label="description">
               </div>
 
               <!-- Tag Filter (Radio Buttons) -->
