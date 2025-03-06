@@ -46,6 +46,8 @@ VALUES
     ('Exploring Quantum Computing', 'A deep dive into the future of computing with quantum mechanics.', 10, '2024-02-20', '/img/testimg3.jpg');
 --temp
 
+--posts_liked = user
+--likedby = post
 INSERT INTO post_liked_by (posts_liked_id, liked_by_id)
 VALUES
     (1, 2),
