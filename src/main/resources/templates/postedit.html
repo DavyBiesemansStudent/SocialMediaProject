@@ -12,16 +12,16 @@
                 <div class="postCard">
                     <form th:action="@{/postedit/{id}(id=${post.id})}" method="post" th:object="${post}">
                         <div class="mb-3">
-                            <label for="title" class="form-label">Title</label>
-                            <input type="text" id="title" class="form-control" th:field="*{title}" required>
+                            <label for="title" class="form-label">Title (max 200 characters)</label>
+                            <input type="text" id="title" class="form-control" th:field="*{title}" maxlength="200" required>
                             <div th:if="${#fields.hasErrors('title')}" class="text-danger">
                                 <span th:errors="*{title}"></span>
                             </div>
                         </div>
 
                         <div class="mb-3">
-                            <label for="description" class="form-label">Description</label>
-                            <textarea id="description" class="form-control" th:field="*{description}" rows="5" required></textarea>
+                            <label for="description" class="form-label">Description (max 1000 characters)</label>
+                            <textarea id="description" class="form-control" th:field="*{description}" maxlength="1000" rows="5"></textarea>
                             <div th:if="${#fields.hasErrors('description')}" class="text-danger">
                                 <span th:errors="*{description}"></span>
                             </div>
