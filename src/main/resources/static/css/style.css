@@ -74,7 +74,8 @@ body {
     overflow-wrap: break-word;
 }
 
-.postDescription p{
+.postDescription p, .postTitleDetail{
+    max-width: 85%;
     word-wrap: break-word;
     overflow-wrap: break-word;
 }
@@ -147,6 +148,7 @@ body {
 }
 
 /* HOME */
+
 @media screen and (max-width: 765px){
     .imgInfo img{
         margin: 4% 0;

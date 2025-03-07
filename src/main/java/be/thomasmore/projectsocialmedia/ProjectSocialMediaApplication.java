@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 TODO:
 -Wireframes aanpassen
 -alles in 'My Profile' in de header laten werken
--genres/tags adden (ManyToMany + detail pagina waarin je uitlegt wat het inhoud)
 -likes en comments laten werken
 -format date
 */

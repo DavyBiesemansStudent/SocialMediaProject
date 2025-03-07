@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<div th:replace="~{fragments/head::head}"></div>
+
+<body class="d-flex flex-column min-vh-100">
+<div th:replace="~{fragments/header::navbar}"></div>
+
+<div class="container py-4">
+    <main th:if="${post}">
+        <div class="row justify-content-center">
+            <div class="col-lg-7 col-md-8 col-sm-10">
+                <div class="postCard">
+                    <form th:action="@{/postedit/{id}(id=${post.id})}" method="post" th:object="${post}">
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Title</label>
+                            <input type="text" id="title" class="form-control" th:field="*{title}" required>
+                            <div th:if="${#fields.hasErrors('title')}" class="text-danger">
+                                <span th:errors="*{title}"></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea id="description" class="form-control" th:field="*{description}" rows="5" required></textarea>
+                            <div th:if="${#fields.hasErrors('description')}" class="text-danger">
+                                <span th:errors="*{description}"></span>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                        <a href="/postdetails/{id}" th:href="@{/postdetails/{id}(id=${post.id})}" class="btn btn-secondary">Cancel</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<main th:unless="${post}">
+    <div class="container text-center">
+        <h2 style="color: white;">No valid post found!</h2>
+    </div>
+</main>
+
+
+<footer class="mt-auto">
+    <div th:replace="~{fragments/footer::footer}"></div>
+</footer>
+</body>
+</html>
