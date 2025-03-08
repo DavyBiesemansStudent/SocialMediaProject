@@ -12,6 +12,7 @@ TODO:
 -check voor user in postedit (niet iedereen mag elke post editen alleen de owner van de post mag editen)
 -security voor postedit
 -admin (kan elke post deleten niet editen)
+-edit bio logged in user
 */
 
 @SpringBootApplication

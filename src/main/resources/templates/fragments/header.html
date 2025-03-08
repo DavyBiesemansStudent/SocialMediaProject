@@ -40,7 +40,7 @@
               <a class="nav-link dropdown-toggle" sec:authentication="name" style="color: white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               </a>
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" th:href="@{/userprofile/{id}(id=${userId})}">Profile</a></li>
+                <li><a class="dropdown-item" th:href="@{/userprofile/{id}(id=${user.id})}">Profile</a></li>
                 <li><a class="dropdown-item" th:href="@{/settings}">Settings</a></li>
                 <li><a class="dropdown-item" th:href="@{/posts}">Liked posts</a></li>
               </ul>

@@ -19,9 +19,7 @@ public class GlobalControllerAdvice {
         String currentUsername = SecurityContextHolder.getContext().getAuthentication().getName();
         AppUser user = appUserRepository.findByUsername(currentUsername);
         if (user != null) {
-            model.addAttribute("username", user.getUsername());
-            model.addAttribute("bio", user.getBio());
-            model.addAttribute("userId", user.getId());
+            model.addAttribute("user", user);
         }
     }
 }
