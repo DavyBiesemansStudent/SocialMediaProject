@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<div th:replace="~{fragments/head::head}"></div>
+
+<body class="d-flex flex-column min-vh-100">
+<div th:replace="~{fragments/header::navbar}"></div>
+
+<div class="container py-4 flex-grow-1">
+  <main>
+    <form th:action="@{/user/logout}" method="post" class="p-4 border rounded-3 shadow-sm">
+      <div class="d-flex justify-content-between">
+        <button type="submit" class="btn btn-danger">Logout</button>
+        <a th:href="@{/feed}" class="btn btn-secondary">Cancel</a>
+      </div>
+    </form>
+  </main>
+</div>
+
+<footer class="mt-auto">
+  <div th:replace="~{fragments/footer::footer}"></div>
+</footer>
+</body>
+</html>

@@ -1,35 +1,95 @@
-INSERT INTO APP_USER (USER_NAME, PASSWORD, BIO, EMAIL, PROFILE_PICTURE_URL)
-VALUES ('johnnywalker92', 'password123', 'Just a tech enthusiast with a passion for building apps and exploring new software. I spend my days coding, learning new programming languages, and looking for the next big innovation in the tech world.', 'john.doe@example.com', '/img/profile_pic.png');
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS authorities;
+CREATE TABLE users
+(
+    username varchar(50) not null primary key,
+    password varchar(100) not null,
+    enabled boolean not null
+);
+CREATE TABLE authorities
+(
+    username VARCHAR(50) NOT NULL,
+    authority VARCHAR(50) NOT NULL,
+    FOREIGN KEY (username) REFERENCES users (username)
+);
+create unique index ix_auth_username on authorities (username,authority);
 
-INSERT INTO APP_USER (USER_NAME, PASSWORD, BIO, EMAIL, PROFILE_PICTURE_URL)
-VALUES ('codingalice', 'alicepassword', 'Loves coding and coffee! I''m always experimenting with new algorithms, and when I''m not in front of my computer, you can find me with a hot cup of coffee reading up on the latest tech trends.', 'alice.smith@example.com', '/img/profile_pic.png');
+-- For johnnywalker92
+INSERT INTO USERS (username, password, enabled)
+VALUES ('johnnywalker92', '$2a$12$d4ube5kH9.SllDIjVdObMu726bb73w3JV1jrhHrZuJys91Zx527yS', true);
+INSERT INTO authorities (username, authority) VALUES ('johnnywalker92', 'USER');
+INSERT INTO APP_USER (USERNAME, NAME, BIO, PROFILE_PICTURE_URL)
+VALUES ('johnnywalker92', 'John Walker', 'Just a tech enthusiast with a passion for building apps and exploring new software. I spend my days coding, learning new programming languages, and looking for the next big innovation in the tech world.', '/img/profile_pic.png');
 
-INSERT INTO APP_USER (USER_NAME, PASSWORD, BIO, EMAIL, PROFILE_PICTURE_URL)
-VALUES ('fitbob88', 'bob12345', 'Fitness fanatic and travel lover. I''m passionate about living a healthy lifestyle and pushing myself to new limits in the gym. When I''m not working out, I love exploring new countries and cultures.', 'bob.jones@example.com', '/img/profile_pic.png');
+-- For codingalice
+INSERT INTO USERS (username, password, enabled)
+VALUES ('codingalice', '$2a$12$d4ube5kH9.SllDIjVdObMu726bb73w3JV1jrhHrZuJys91Zx527yS', true);
+INSERT INTO authorities (username, authority) VALUES ('codingalice', 'USER');
+INSERT INTO APP_USER (USERNAME, NAME, BIO, PROFILE_PICTURE_URL)
+VALUES ('codingalice', 'Alice Smith', 'Loves coding and coffee! I''m always experimenting with new algorithms, and when I''m not in front of my computer, you can find me with a hot cup of coffee reading up on the latest tech trends.', '/img/profile_pic.png');
 
-INSERT INTO APP_USER (USER_NAME, PASSWORD, BIO, EMAIL, PROFILE_PICTURE_URL)
-VALUES ('foodiecharlie', 'charliepass', 'Foodie and amateur photographer always on the lookout for the next best meal. Whether it''s a hole-in-the-wall diner or a five-star restaurant, I love documenting my culinary adventures with my camera.', 'charlie.brown@example.com', '/img/profile_pic.png');
+-- For fitbob88
+INSERT INTO USERS (username, password, enabled)
+VALUES ('fitbob88', '$2a$12$d4ube5kH9.SllDIjVdObMu726bb73w3JV1jrhHrZuJys91Zx527yS', true);
+INSERT INTO authorities (username, authority) VALUES ('fitbob88', 'USER');
+INSERT INTO APP_USER (USERNAME, NAME, BIO, PROFILE_PICTURE_URL)
+VALUES ('fitbob88', 'Bob Johnson', 'Fitness fanatic and travel lover. I''m passionate about living a healthy lifestyle and pushing myself to new limits in the gym. When I''m not working out, I love exploring new countries and cultures.', '/img/profile_pic.png');
 
-INSERT INTO APP_USER (USER_NAME, PASSWORD, BIO, EMAIL, PROFILE_PICTURE_URL)
-VALUES ('musicdavid56', 'davidpw123', 'Music lover and bookworm with a collection of vinyl records and a deep passion for storytelling. If I''m not lost in a good book, you''ll find me jamming to classic rock or jazz tunes on my turntable.', 'david.white@example.com', '/img/profile_pic.png');
+-- For foodiecharlie
+INSERT INTO USERS (username, password, enabled)
+VALUES ('foodiecharlie', '$2a$12$d4ube5kH9.SllDIjVdObMu726bb73w3JV1jrhHrZuJys91Zx527yS', true);
+INSERT INTO authorities (username, authority) VALUES ('foodiecharlie', 'USER');
+INSERT INTO APP_USER (USERNAME, NAME, BIO, PROFILE_PICTURE_URL)
+VALUES ('foodiecharlie', 'Charlie Brown', 'Foodie and amateur photographer always on the lookout for the next best meal. Whether it''s a hole-in-the-wall diner or a five-star restaurant, I love documenting my culinary adventures with my camera.', '/img/profile_pic.png');
 
-INSERT INTO APP_USER (USER_NAME, PASSWORD, BIO, EMAIL, PROFILE_PICTURE_URL)
-VALUES ('runner_eco', 'evagreenpass', 'Avid runner and environmentalist. I run to clear my mind and stay healthy, and I''m a strong advocate for sustainability and protecting our planet. I believe every small action counts towards making a big difference.', 'eva.green@example.com', '/img/profile_pic.png');
+-- For musicdavid56
+INSERT INTO USERS (username, password, enabled)
+VALUES ('musicdavid56', '$2a$12$d4ube5kH9.SllDIjVdObMu726bb73w3JV1jrhHrZuJys91Zx527yS', true);
+INSERT INTO authorities (username, authority) VALUES ('musicdavid56', 'USER');
+INSERT INTO APP_USER (USERNAME, NAME, BIO, PROFILE_PICTURE_URL)
+VALUES ('musicdavid56', 'David White', 'Music lover and bookworm with a collection of vinyl records and a deep passion for storytelling. If I''m not lost in a good book, you''ll find me jamming to classic rock or jazz tunes on my turntable.', '/img/profile_pic.png');
 
-INSERT INTO APP_USER (USER_NAME, PASSWORD, BIO, EMAIL, PROFILE_PICTURE_URL)
-VALUES ('gamerfrank01', 'frankpassword', 'Gamer, movie buff, and coffee enthusiast. I spend my weekends in front of the screen, whether it''s diving into an epic RPG, catching the latest blockbuster movie, or sipping on my favorite dark roast coffee.', 'frank.harris@example.com', '/img/profile_pic.png');
+-- For runner_eco
+INSERT INTO USERS (username, password, enabled)
+VALUES ('runner_eco', '$2a$12$d4ube5kH9.SllDIjVdObMu726bb73w3JV1jrhHrZuJys91Zx527yS', true);
+INSERT INTO authorities (username, authority) VALUES ('runner_eco', 'USER');
+INSERT INTO APP_USER (USERNAME, NAME, BIO, PROFILE_PICTURE_URL)
+VALUES ('runner_eco', 'Eva Green', 'Avid runner and environmentalist. I run to clear my mind and stay healthy, and I''m a strong advocate for sustainability and protecting our planet. I believe every small action counts towards making a big difference.', '/img/profile_pic.png');
 
-INSERT INTO APP_USER (USER_NAME, PASSWORD, BIO, EMAIL, PROFILE_PICTURE_URL)
-VALUES ('artsygrace', 'gracepass123', 'Aspiring artist and fashion lover with a creative mind. I find inspiration in the world around me, whether it''s through sketching, painting, or curating outfits that express my style and personality.', 'grace.lee@example.com', '/img/profile_pic.png');
+-- For gamerfrank01
+INSERT INTO USERS (username, password, enabled)
+VALUES ('gamerfrank01', '$2a$12$d4ube5kH9.SllDIjVdObMu726bb73w3JV1jrhHrZuJys91Zx527yS', true);
+INSERT INTO authorities (username, authority) VALUES ('gamerfrank01', 'USER');
+INSERT INTO APP_USER (USERNAME, NAME, BIO, PROFILE_PICTURE_URL)
+VALUES ('gamerfrank01', 'Frank Harris', 'Gamer, movie buff, and coffee enthusiast. I spend my weekends in front of the screen, whether it''s diving into an epic RPG, catching the latest blockbuster movie, or sipping on my favorite dark roast coffee.', '/img/profile_pic.png');
 
-INSERT INTO APP_USER (USER_NAME, PASSWORD, BIO, EMAIL, PROFILE_PICTURE_URL)
-VALUES ('sports_hank', 'hankmoorepw', 'Sports enthusiast and photography lover. Whether I''m on the field or behind the camera, I''m always seeking new challenges. I have a passion for capturing the perfect action shot during sports games and adventures.', 'hank.moore@example.com', '/img/profile_pic.png');
+-- For artsygrace
+INSERT INTO USERS (username, password, enabled)
+VALUES ('artsygrace', '$2a$12$d4ube5kH9.SllDIjVdObMu726bb73w3JV1jrhHrZuJys91Zx527yS', true);
+INSERT INTO authorities (username, authority) VALUES ('artsygrace', 'USER');
+INSERT INTO APP_USER (USERNAME, NAME, BIO, PROFILE_PICTURE_URL)
+VALUES ('artsygrace', 'Grace Lee', 'Aspiring artist and fashion lover with a creative mind. I find inspiration in the world around me, whether it''s through sketching, painting, or curating outfits that express my style and personality.', '/img/profile_pic.png');
 
-INSERT INTO APP_USER (USER_NAME, PASSWORD, BIO, EMAIL, PROFILE_PICTURE_URL)
-VALUES ('natureiris', 'irisperez123', 'Animal lover and nature explorer. I enjoy hiking through forests, discovering hidden wildlife, and supporting wildlife conservation. My goal is to protect nature and inspire others to reconnect with the outdoors.', 'iris.perez@example.com', '/img/profile_pic.png');
+-- For sports_hank
+INSERT INTO USERS (username, password, enabled)
+VALUES ('sports_hank', '$2a$12$d4ube5kH9.SllDIjVdObMu726bb73w3JV1jrhHrZuJys91Zx527yS', true);
+INSERT INTO authorities (username, authority) VALUES ('sports_hank', 'USER');
+INSERT INTO APP_USER (USERNAME, NAME, BIO, PROFILE_PICTURE_URL)
+VALUES ('sports_hank', 'Hank Moore', 'Sports enthusiast and photography lover. Whether I''m on the field or behind the camera, I''m always seeking new challenges. I have a passion for capturing the perfect action shot during sports games and adventures.', '/img/profile_pic.png');
 
-INSERT INTO APP_USER (USER_NAME, PASSWORD, BIO, EMAIL, PROFILE_PICTURE_URL)
-VALUES ('techgeek25', 'securepassword123', 'Tech enthusiast with a passion for AI, machine learning, and coding. I spend my time exploring the latest technologies, programming, and contributing to open-source projects.', 'tech.geek25@example.com', '/img/profile_pic.png');
+-- For natureiris
+INSERT INTO USERS (username, password, enabled)
+VALUES ('natureiris', '$2a$12$d4ube5kH9.SllDIjVdObMu726bb73w3JV1jrhHrZuJys91Zx527yS', true);
+INSERT INTO authorities (username, authority) VALUES ('natureiris', 'USER');
+INSERT INTO APP_USER (USERNAME, NAME, BIO, PROFILE_PICTURE_URL)
+VALUES ('natureiris', 'Iris Perez', 'Animal lover and nature explorer. I enjoy hiking through forests, discovering hidden wildlife, and supporting wildlife conservation. My goal is to protect nature and inspire others to reconnect with the outdoors.', '/img/profile_pic.png');
+
+-- For techgeek25
+INSERT INTO USERS (username, password, enabled)
+VALUES ('techgeek25', '$2a$12$d4ube5kH9.SllDIjVdObMu726bb73w3JV1jrhHrZuJys91Zx527yS', true);
+INSERT INTO authorities (username, authority) VALUES ('techgeek25', 'USER');
+INSERT INTO APP_USER (USERNAME, NAME, BIO, PROFILE_PICTURE_URL)
+VALUES ('techgeek25', 'Tech Geek', 'Tech enthusiast with a passion for AI, machine learning, and coding. I spend my time exploring the latest technologies, programming, and contributing to open-source projects.', '/img/profile_pic.png');
 
 --temp
 INSERT INTO post (title, description, poster_id, date, img_Path)

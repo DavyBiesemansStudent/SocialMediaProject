@@ -9,7 +9,7 @@
     <main class="container" th:object="${appUser}" th:if="${appUser}">
         <div class="row d-flex justify-content-center align-items-center userInfo">
             <div class="col-12 col-md-5 text-start textInfo">
-                <h1 th:text="*{userName}"></h1>
+                <h1 th:text="*{name}"></h1>
                 <p th:text="|id: *{id}|" style="opacity: 50%"></p>
                 <h1>Bio:</h1>
                 <p th:text="*{bio}"></p>

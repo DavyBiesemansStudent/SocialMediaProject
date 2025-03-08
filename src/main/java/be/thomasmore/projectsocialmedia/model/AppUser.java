@@ -10,13 +10,11 @@ public class AppUser {
     @GeneratedValue(strategy = GenerationType.IDENTITY) //auto increment id (last-used + 1)
     private int id;
 
-    private String userName;
-    private String password;
+    private String name;
 
     @Column(length = 250)
     private String bio;
 
-    private String email;
     private String profilePictureUrl;
 
     @ManyToMany(mappedBy = "likedBy")
@@ -28,6 +26,24 @@ public class AppUser {
     @OneToMany(mappedBy = "appUser")
     private Collection<Comment> comments;
 
+    private String username;
+
+    public Collection<Post> getPostsLiked() {
+        return postsLiked;
+    }
+
+    public void setPostsLiked(Collection<Post> postsLiked) {
+        this.postsLiked = postsLiked;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public int getId() {
         return id;
     }
@@ -36,20 +52,12 @@ public class AppUser {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getName() {
+        return name;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setName(String userName) {
+        this.name = userName;
     }
 
     public String getBio() {
@@ -58,14 +66,6 @@ public class AppUser {
 
     public void setBio(String bio) {
         this.bio = bio;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getProfilePictureUrl() {
