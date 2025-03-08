@@ -12,6 +12,7 @@ import java.security.Principal;
 public class UserController {
     @GetMapping("/login")
     public String login(Model model, Principal principal) {
+        //redirect if logged in user tries to go to login page
         if (principal != null) {
             return "redirect:/feed";
         }

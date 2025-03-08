@@ -12,7 +12,8 @@ TODO:
 -format date
 -check voor user in postedit (niet iedereen mag elke post editen alleen de owner van de post mag editen)
 -security voor postedit
--vandaag -> user kan inloggen/registreren, user kan zijn eigen post editen en niet die van andere mensen. (post createn etc.. nog niet nu)
+-admin (kan elke post deleten niet editen)
+-vandaag -> user kan inloggen, user kan zijn eigen post editen en niet die van andere mensen. (post createn etc.. nog niet nu)
 */
 
 @SpringBootApplication

@@ -7,12 +7,23 @@
 
 <div class="container py-4 flex-grow-1">
   <main>
-    <form th:action="@{/user/logout}" method="post" class="p-4 border rounded-3 shadow-sm">
-      <div class="d-flex justify-content-between">
-        <button type="submit" class="btn btn-danger">Logout</button>
-        <a th:href="@{/feed}" class="btn btn-secondary">Cancel</a>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <form th:action="@{/user/logout}" method="post" class="logoutForm p-4 border rounded-3 shadow-sm">
+          <h2 class="mb-4 text-center">Are you sure you want to log out?</h2>
+
+          <!-- Logout Button -->
+          <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-danger w-100">Logout</button>
+          </div>
+
+          <!-- Cancel Button -->
+          <div class="mt-3 text-center">
+            <a th:href="@{/home}" class="btn btn-secondary w-100">Cancel</a>
+          </div>
+        </form>
       </div>
-    </form>
+    </div>
   </main>
 </div>
 

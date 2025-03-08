@@ -21,6 +21,16 @@ body {
 }
 /*PROFILE PAGE*/
 
+/*LOGIN/LOGOUT*/
+.loginForm {
+    color: white;
+}
+
+.logoutForm{
+    color: white;
+}
+/*LOGIN/LOGOUT*/
+
 /*POST*/
 
 .postCard {

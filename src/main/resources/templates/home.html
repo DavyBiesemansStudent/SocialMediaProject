@@ -1,18 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:sec="http://www.thymeleaf.org">
 <div th:replace="~{fragments/head::head}"></div>
 
 <body class="d-flex flex-column min-vh-100">
+
+<!-- Navbar -->
 <div th:replace="~{fragments/header::navbar}"></div>
 
-<div class="container text-center mt-5">
-    <h1 class="me-3" style="color: white;">Welcome user123</h1>
-    <p style="color: white">CHECK FOR LOGGED IN USER (WIP)</p>
-    <a th:href="@{/feed}" class="btn btn-primary btn-lg">Go to Feed</a>
+<!-- Main Content -->
+<div class="container d-flex justify-content-center align-items-center mt-5" style="height: 80vh;">
+    <div class="text-center">
+        <h1 sec:authorize="!isAuthenticated()" style="color: white;">You are not logged in.</h1>
+        <a sec:authorize="!isAuthenticated()" th:href="@{user/login}" class="btn btn-secondary btn-lg mt-3">login</a>
+
+        <h1 sec:authorize="isAuthenticated()" th:text="|Hello ${name}|" style="color: white;"></h1>
+        <a sec:authorize="isAuthenticated()" th:href="@{user/logout}" class="btn btn-secondary btn-lg mt-3">logout</a>
+        <a th:href="@{/feed}" class="btn btn-primary btn-lg mt-3">Go to Feed</a>
+    </div>
 </div>
 
+<!-- Footer -->
 <footer class="mt-auto">
-  <div th:replace="~{fragments/footer::footer}"></div>
+    <div th:replace="~{fragments/footer::footer}"></div>
 </footer>
+
 </body>
 </html>
