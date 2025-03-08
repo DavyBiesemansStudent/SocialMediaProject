@@ -13,12 +13,14 @@
                     <form th:action="@{/postedit/{id}(id=${post.id})}" method="post" th:object="${post}">
                         <div class="mb-3">
                             <label for="title" class="form-label">Title (max 200 characters)</label>
-                            <input type="text" id="title" class="form-control" th:field="*{title}" maxlength="200" required>
+                            <input type="text" id="title" class="form-control" th:field="*{title}" maxlength="200"
+                                   th:disabled="${#authentication.name != post.poster.username}" required>
                         </div>
 
                         <div class="mb-3">
                             <label for="description" class="form-label">Description (max 1000 characters)</label>
-                            <textarea id="description" class="form-control" th:field="*{description}" maxlength="1000" rows="5"></textarea>
+                            <textarea id="description" class="form-control" th:field="*{description}" maxlength="1000" rows="5"
+                                      th:disabled="${#authentication.name != post.poster.username}" ></textarea>
                         </div>
 
                         <button type="submit" class="btn btn-primary">Save Changes</button>

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.security.Principal;
 import java.util.Optional;
 
 @Controller
@@ -36,10 +37,15 @@ public class PostEditController {
     }
 
     @PostMapping("/postedit/{id}")
-    public String editPost(@PathVariable(required = false) Integer id, Model model, @Valid Post post, BindingResult bindingResult){
+    public String editPost(@PathVariable(required = false) Integer id, Model model, @Valid Post post, BindingResult bindingResult, Principal principal){
+
         if(bindingResult.hasErrors()){
             return "postedit";
         }
+        if (!post.getPoster().getUsername().equals(principal.getName())) {
+            return "redirect:/feed";
+        }
+
         postRepository.save(post);
         return "redirect:/postdetails/" + id;
     }

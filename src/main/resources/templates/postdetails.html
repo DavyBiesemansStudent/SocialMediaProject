@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
 <div th:replace="~{fragments/head::head}"></div>
 
 <body class="d-flex flex-column min-vh-100">
@@ -27,12 +27,13 @@
             <p th:text="${post.description}">This is an example description of the post.</p>
           </div>
 
-          <a th:href="@{/postedit/{id}(id=${post.id})}" class="btn btn-warning btn-sm">Edit</a>
+          <!-- Edit -->
+          <a th:if="${#authentication.name == user.username}" th:href="@{/postedit/{id}(id=${post.id})}" class="btn btn-warning btn-sm">Edit</a>
 
           <!-- Author -->
           <div class="postFooter d-flex justify-content-between align-items-center">
           <span class="postAuthor">Posted by
-            <a th:href="@{|/userprofile/*{user.id}|}" th:text="${user.name}"></a>
+            <a th:href="@{|/userprofile/*{user.id}|}" th:text="${user.username}"></a>
           </span>
 
             <!-- Like button-->
@@ -47,7 +48,7 @@
 
           <!-- Comments Section -->
           <div class="commentsSection">
-            <form method="post" action="/addComment" class="commentForm">
+            <form sec:authorize="isAuthenticated()" method="post" action="/addComment" class="commentForm">
               <div class="mb-3">
                 <textarea name="commentText" class="form-control" placeholder="Add a comment..." rows="2" required></textarea>
               </div>
