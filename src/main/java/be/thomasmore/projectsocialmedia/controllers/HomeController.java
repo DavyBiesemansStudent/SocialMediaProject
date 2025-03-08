@@ -16,12 +16,7 @@ public class HomeController {
 
     @GetMapping({"/home","/"})
     public String home(Model model) {
-        String currentUsername = SecurityContextHolder.getContext().getAuthentication().getName();
-        AppUser user = appUserRepository.findByUsername(currentUsername);
-        if (user != null) {
-            model.addAttribute("name", user.getUsername());
-            model.addAttribute("bio", user.getBio());
-        }
+
         return "home";
     }
 }

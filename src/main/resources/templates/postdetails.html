@@ -3,7 +3,7 @@
 <div th:replace="~{fragments/head::head}"></div>
 
 <body class="d-flex flex-column min-vh-100">
-<div th:replace="~{fragments/header::navbar}"></div>
+<div th:replace="~{fragments/header :: navbar}"></div>
 
 <div class="container py-4">
   <main th:if="${post}">
@@ -35,24 +35,25 @@
           <span class="postAuthor">Posted by
             <a th:href="@{|/userprofile/*{user.id}|}" th:text="${user.username}"></a>
           </span>
-
             <!-- Like button-->
             <div class="d-flex align-items-center">
               <form method="post" action="/likePost" class="likeForm">
                 <input type="hidden" name="postId" th:value="${post.id}">
-                <button type="submit" class="btn btn-sm btn-outline-danger likeButton">Like</button>
+                <button sec:authorize="isAuthenticated()" type="submit" class="btn btn-sm btn-outline-danger likeButton">Like</button>
+                <a sec:authorize="!isAuthenticated()" th:href="@{/user/login}" class="btn btn-sm btn-outline-danger likeButton">Like</a>
               </form>
               <span class="likeCounter ms-2" th:text="${post.likedBy.size()}">0</span>
             </div>
           </div>
 
           <!-- Comments Section -->
-          <div class="commentsSection">
-            <form sec:authorize="isAuthenticated()" method="post" action="/addComment" class="commentForm">
+          <div class="commentsSection">                           <!--word th:action-->
+            <form method="post" action="/addComment" class="commentForm">
               <div class="mb-3">
                 <textarea name="commentText" class="form-control" placeholder="Add a comment..." rows="2" required></textarea>
               </div>
-              <button type="submit" class="btn btn-sm btn-primary mb-1">Post Comment</button>
+              <button sec:authorize="isAuthenticated()" type="submit" class="btn btn-sm btn-primary mb-1">Post Comment</button>
+              <a sec:authorize="!isAuthenticated()" th:href="@{/user/login}" class="btn btn-sm btn-primary mb-1">Post Comment</a>
             </form>
 
             <h6 th:text="|Comments: (${comments.size()})|"></h6>

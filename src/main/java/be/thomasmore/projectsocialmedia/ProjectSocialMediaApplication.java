@@ -5,7 +5,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /*
 TODO:
--LOGIN!!!!
 -Wireframes aanpassen
 -alles in 'My Profile' in de header laten werken
 -likes en comments laten werken
