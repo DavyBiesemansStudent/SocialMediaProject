@@ -3,9 +3,7 @@ package be.thomasmore.projectsocialmedia.controlleradvice;
 import be.thomasmore.projectsocialmedia.model.AppUser;
 import be.thomasmore.projectsocialmedia.repositories.AppUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -21,7 +19,7 @@ public class GlobalControllerAdvice {
         String currentUsername = SecurityContextHolder.getContext().getAuthentication().getName();
         AppUser user = appUserRepository.findByUsername(currentUsername);
         if (user != null) {
-            model.addAttribute("name", user.getUsername());
+            model.addAttribute("username", user.getUsername());
             model.addAttribute("bio", user.getBio());
             model.addAttribute("userId", user.getId());
         }
