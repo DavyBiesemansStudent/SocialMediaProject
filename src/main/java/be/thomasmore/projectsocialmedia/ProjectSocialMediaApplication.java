@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /*
 TODO:
 -Wireframes aanpassen
+-Custom error page
 -alles in 'My Profile' in de header laten werken
 -likes en comments laten werken
 -format date
@@ -13,6 +14,7 @@ TODO:
 -security voor postedit
 -admin (kan elke post deleten niet editen)
 -edit bio logged in user
+-style login/out more
 */
 
 @SpringBootApplication
