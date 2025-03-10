@@ -10,7 +10,6 @@ TODO:
 -alles in 'My Profile' in de header laten werken
 -likes en comments laten werken
 -format date
--check voor user in postedit (niet iedereen mag elke post editen alleen de owner van de post mag editen)
 -security voor postedit
 -admin (kan elke post deleten niet editen)
 -edit bio logged in user

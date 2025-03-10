@@ -27,7 +27,7 @@ public class PostController {
 
         if(postFromDB.isPresent()){
             model.addAttribute("post", postFromDB.get());
-            model.addAttribute("user", postFromDB.get().getPoster());
+            model.addAttribute("poster", postFromDB.get().getPoster());
             model.addAttribute("comments", postFromDB.get().getCommentsPost());
         }
 

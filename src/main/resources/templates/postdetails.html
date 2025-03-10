@@ -28,12 +28,12 @@
           </div>
 
           <!-- Edit -->
-          <a th:if="${#authentication.name == user.username}" th:href="@{/postedit/{id}(id=${post.id})}" class="btn btn-warning btn-sm">Edit</a>
+          <a th:if="${#authentication.name == poster.username}" th:href="@{/postedit/{id}(id=${post.id})}" class="btn btn-warning btn-sm">Edit</a>
 
           <!-- Author -->
           <div class="postFooter d-flex justify-content-between align-items-center">
           <span class="postAuthor">Posted by
-            <a th:href="@{|/userprofile/*{user.id}|}" th:text="${user.username}"></a>
+            <a th:href="@{|/userprofile/*{poster.id}|}" th:text="${poster.username}"></a>
           </span>
             <!-- Like button-->
             <div class="d-flex align-items-center">
