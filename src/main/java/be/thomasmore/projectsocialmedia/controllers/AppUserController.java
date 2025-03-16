@@ -49,20 +49,4 @@ public class AppUserController {
         return "userlist";
     }
 
-    @GetMapping("/user/login")
-    public String login(Model model, Principal principal) {
-        //redirect if logged in user tries to go to login page
-        if (principal != null) {
-            return "redirect:/feed";
-        }
-        return "user/login";
-    }
-
-    @GetMapping("/user/logout")
-    public String logout(Model model, Principal principal) {
-        if (principal == null) {
-            return "redirect:/feed";
-        }
-        return "user/logout";
-    }
 }
