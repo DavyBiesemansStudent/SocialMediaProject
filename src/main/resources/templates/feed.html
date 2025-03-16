@@ -26,13 +26,15 @@
               <!-- Title Filter -->
               <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
-                <input type="text"  class="form-control" id="title" name="title" placeholder="Enter title" aria-label="title">
+                <input type="text"  class="form-control" id="title" name="title" placeholder="Enter title" aria-label="title"
+                       th:value="${param.title}">
               </div>
 
               <!-- Description Filter -->
               <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
-                <input type="text" class="form-control" id="description" name="description" placeholder="Enter description" aria-label="description">
+                <input type="text" class="form-control" id="description" name="description" placeholder="Enter description" aria-label="description"
+                       th:value="${param.description}">
               </div>
 
               <!-- Tag Filter (Radio Buttons) -->
@@ -75,17 +77,20 @@
               <!-- Date Filter -->
               <div class="mb-3">
                 <label for="date" class="form-label">Date</label>
-                <input type="date" class="form-control" id="date" name="date">
+                <input type="date" class="form-control" id="date" name="date"
+                       th:value="${param.date}">
               </div>
 
               <!-- Likes Range Filter -->
               <div class="mb-3">
                 <label for="minLikes" class="form-label">Min Likes</label>
-                <input type="number" class="form-control" id="minLikes" name="minLikes">
+                <input type="number" class="form-control" id="minLikes" name="minLikes"
+                       th:value="${param.minLikes}">
               </div>
               <div class="mb-3">
                 <label for="maxLikes" class="form-label">Max Likes</label>
-                <input type="number" class="form-control" id="maxLikes" name="maxLikes">
+                <input type="number" class="form-control" id="maxLikes" name="maxLikes"
+                       th:value="${param.maxLikes}">
               </div>
 
               <button type="submit" class="btn btn-primary">Apply Filters</button>
