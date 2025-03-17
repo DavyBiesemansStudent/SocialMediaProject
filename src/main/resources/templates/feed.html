@@ -84,12 +84,12 @@
               <!-- Likes Range Filter -->
               <div class="mb-3">
                 <label for="minLikes" class="form-label">Min Likes</label>
-                <input type="number" class="form-control" id="minLikes" name="minLikes"
+                <input type="number" class="form-control" id="minLikes" name="minLikes" min="0"
                        th:value="${param.minLikes}">
               </div>
               <div class="mb-3">
                 <label for="maxLikes" class="form-label">Max Likes</label>
-                <input type="number" class="form-control" id="maxLikes" name="maxLikes"
+                <input type="number" class="form-control" id="maxLikes" name="maxLikes" min="0"
                        th:value="${param.maxLikes}">
               </div>
 
