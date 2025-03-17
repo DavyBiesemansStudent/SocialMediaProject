@@ -2,6 +2,7 @@ package be.thomasmore.projectsocialmedia.controllers;
 
 import be.thomasmore.projectsocialmedia.model.Post;
 import be.thomasmore.projectsocialmedia.repositories.PostRepository;
+import be.thomasmore.projectsocialmedia.repositories.TagRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -53,5 +54,4 @@ public class PostController {
         model.addAttribute("posts", posts);
         return "feed";
     }
-
 }

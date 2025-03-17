@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<div th:replace="~{fragments/head::head}"></div>
+
+<body class="d-flex flex-column min-vh-100">
+<div th:replace="~{fragments/header :: navbar}"></div>
+
+<div class="container py-4">
+  <main>
+    <div class="row justify-content-center">
+      <div class="col-lg-7 col-md-8 col-sm-10">
+        <div class="postCard">
+          <form th:action="@{/postcreate}" method="post" th:object="${post}">
+            <div class="mb-3">
+              <label for="title" class="form-label">Title (max 200 characters)</label>
+              <input type="text" id="title" class="form-control" th:field="*{title}" maxlength="200" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="description" class="form-label">Description (max 1000 characters)</label>
+              <textarea id="description" class="form-control" th:field="*{description}" maxlength="1000" rows="5"></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="image" class="form-label">Image URL</label>
+              <input type="text" id="image" class="form-control" th:field="*{imgPath}" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="optionalTags" class="form-label">Tags</label>
+              <select id="optionalTags" class="form-control" th:field="*{tagsPost}" multiple required>
+                <option th:each="tag : ${tags}" th:value="${tag.id}" th:text="${tag.name}"></option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Create Post</button>
+            <a href="/" class="btn btn-secondary">Cancel</a>
+
+            <p class="text-danger" th:if="${#fields.hasErrors('tagsPost')}" th:errors="*{tagsPost}"></p>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<footer class="mt-auto">
+  <div th:replace="~{fragments/footer::footer}"></div>
+</footer>
+</body>
+</html>

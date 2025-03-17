@@ -3,6 +3,7 @@ package be.thomasmore.projectsocialmedia.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
