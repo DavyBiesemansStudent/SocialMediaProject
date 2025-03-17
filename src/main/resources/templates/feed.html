@@ -120,7 +120,7 @@
             <div class="card-footer text-muted d-flex justify-content-between">
               <span th:text="${post.date}"></span>
               <div>
-                <span th:text="|Likes ${post.likedBy.size} -|"></span>
+                <span th:text="|Likes ${post.likedusers.size()} -|"></span>
                 <span th:text="|Comments: ${post.commentsPost.size()}|"></span>
               </div>
             </div>

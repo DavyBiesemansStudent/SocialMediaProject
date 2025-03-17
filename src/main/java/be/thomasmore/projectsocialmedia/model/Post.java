@@ -3,7 +3,6 @@ package be.thomasmore.projectsocialmedia.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
@@ -23,7 +22,7 @@ public class Post {
     private AppUser poster;
 
     @ManyToMany
-    private Collection<AppUser> likedBy;
+    private Collection<AppUser> likedusers;
 
     @OneToMany(mappedBy = "post")
     private Collection<Comment> commentsPost;
@@ -79,12 +78,12 @@ public class Post {
         this.poster = poster;
     }
 
-    public Collection<AppUser> getLikedBy() {
-        return likedBy;
+    public Collection<AppUser> getLikedusers() {
+        return likedusers;
     }
 
-    public void setLikedBy(Collection<AppUser> likedBy) {
-        this.likedBy = likedBy;
+    public void setLikedusers(Collection<AppUser> likedBy) {
+        this.likedusers = likedBy;
     }
 
     public LocalDate getDate() {

@@ -17,8 +17,8 @@ public class AppUser {
 
     private String profilePictureUrl;
 
-    @ManyToMany(mappedBy = "likedBy")
-    private Collection<Post> postsLiked;
+    @ManyToMany(mappedBy = "likedusers")
+    private Collection<Post> likedposts;
 
     @OneToMany(mappedBy = "poster")
     private Collection<Post> post;
@@ -28,12 +28,12 @@ public class AppUser {
 
     private String username;
 
-    public Collection<Post> getPostsLiked() {
-        return postsLiked;
+    public Collection<Post> getLikedposts() {
+        return likedposts;
     }
 
-    public void setPostsLiked(Collection<Post> postsLiked) {
-        this.postsLiked = postsLiked;
+    public void setLikedposts(Collection<Post> postsLiked) {
+        this.likedposts = postsLiked;
     }
 
     public String getUsername() {
@@ -77,11 +77,11 @@ public class AppUser {
     }
 
     public Collection<Post> getLikes() {
-        return postsLiked;
+        return likedposts;
     }
 
     public void setLikes(Collection<Post> posts) {
-        this.postsLiked = posts;
+        this.likedposts = posts;
     }
 
     public Collection<Post> getPost() {

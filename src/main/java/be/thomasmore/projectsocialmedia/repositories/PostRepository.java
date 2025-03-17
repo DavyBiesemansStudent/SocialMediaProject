@@ -16,8 +16,8 @@ public interface PostRepository extends CrudRepository<Post, Integer> {
             "AND (:description IS NULL OR p.description LIKE %:description%) " +
             "AND (:tag IS NULL OR t.name = :tag) " +
             "AND (:date IS NULL OR p.date = :date) " +
-            "AND (:minLikes IS NULL OR (SELECT COUNT(l) FROM p.likedBy l) >= :minLikes) " +
-            "AND (:maxLikes IS NULL OR (SELECT COUNT(l) FROM p.likedBy l) <= :maxLikes)")
+            "AND (:minLikes IS NULL OR (SELECT COUNT(l) FROM p.likedusers l) >= :minLikes) " +
+            "AND (:maxLikes IS NULL OR (SELECT COUNT(l) FROM p.likedusers l) <= :maxLikes)")
     List<Post> findByFilter(
             @Param("title") String title,
             @Param("description") String description,

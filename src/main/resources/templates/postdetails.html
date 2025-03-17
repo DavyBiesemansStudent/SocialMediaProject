@@ -37,12 +37,15 @@
           </span>
             <!-- Like button-->
             <div class="d-flex align-items-center">
-              <form method="post" action="/likePost" class="likeForm">
+              <form method="post" th:action="@{/likePost}" class="likeForm">
                 <input type="hidden" name="postId" th:value="${post.id}">
-                <button sec:authorize="isAuthenticated()" type="submit" class="btn btn-sm btn-outline-danger likeButton">Like</button>
-                <a sec:authorize="!isAuthenticated()" th:href="@{/user/login}" class="btn btn-sm btn-outline-danger likeButton">Like</a>
+                <button sec:authorize="isAuthenticated()" type="submit" class="btn btn-sm likeButton"
+                        th:classappend="${#lists.contains(post.likedusers, user)} ? 'btn-outline-danger' : 'btn-outline-primary'"
+                        th:text="${#lists.contains(post.likedusers, user)} ? '❤️ Liked' : '🤍 Like'">
+                </button>
+                <a sec:authorize="!isAuthenticated()" th:href="@{/user/login}" class="btn btn-sm btn-outline-primary likeButton">🤍 Like</a>
               </form>
-              <span class="likeCounter ms-2" th:text="${post.likedBy.size()}">0</span>
+              <span class="likeCounter ms-2" th:text="${post.likedusers.size()}">0</span>
             </div>
           </div>
 
