@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,8 +35,14 @@ public class AppUserController {
 
         Optional<AppUser> appUserDB = appUserRepository.findById(id);
         if (appUserDB.isPresent()) {
-            model.addAttribute("appUser", appUserDB.get());
-            model.addAttribute("userPosts", appUserDB.get().getPost());
+            AppUser user = appUserDB.get();
+            model.addAttribute("appUser", user);
+
+            // Convert Collection<Post> to List<Post> and reverse it (most recent first)
+            List<Post> userPosts = new ArrayList<>(user.getPost());
+            Collections.reverse(userPosts);
+
+            model.addAttribute("userPosts", userPosts);
         }
 
         return "userprofile";

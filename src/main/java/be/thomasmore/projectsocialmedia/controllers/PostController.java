@@ -2,15 +2,15 @@ package be.thomasmore.projectsocialmedia.controllers;
 
 import be.thomasmore.projectsocialmedia.model.Post;
 import be.thomasmore.projectsocialmedia.repositories.PostRepository;
-import be.thomasmore.projectsocialmedia.repositories.TagRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+
 
 @Controller
 public class PostController {
@@ -49,7 +49,8 @@ public class PostController {
             parsedDate = LocalDate.parse(date);  // Parse the date
         }
 
-        final Iterable<Post> posts = postRepository.findByFilter(title, description, tag, parsedDate, minLikes, maxLikes);
+        List<Post> posts = postRepository.findByFilter(title, description, tag, parsedDate, minLikes, maxLikes);
+        Collections.reverse(posts); //(most recent first)
 
         model.addAttribute("posts", posts);
         return "feed";
