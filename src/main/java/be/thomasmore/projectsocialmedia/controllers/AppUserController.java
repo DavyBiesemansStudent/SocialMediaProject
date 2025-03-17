@@ -64,8 +64,10 @@ public class AppUserController {
         if (user == null) {
             return "redirect:/user/login";
         }
+        List<Post> likedPosts = new ArrayList<>(user.getLikedposts());
+        Collections.reverse(likedPosts);
 
-        model.addAttribute("likedPosts", user.getLikedposts());
+        model.addAttribute("likedPosts",likedPosts);
 
         return "likedposts";
     }
