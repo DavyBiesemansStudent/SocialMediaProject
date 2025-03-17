@@ -14,7 +14,7 @@
           <!-- Content -->
           <div class="postHeader d-flex justify-content-between align-items-center">
             <h5 class="m-0 postTitleDetail" th:text="${post.title}">Post Title</h5>
-            <span class="postDate" th:text="${post.date}">2024-02-20</span>
+            <span class="postDate" th:text="${#temporals.format(post.date, 'dd-MM-yyyy')}">01-01-2025</span>
           </div>
           <p class="mb-0">
             <span th:each="tag : ${post.tagsPost}" th:class="'tag-' + ${tag.name.toLowerCase()}" th:text="|${tag.name} |"></span>

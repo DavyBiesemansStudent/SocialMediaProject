@@ -118,7 +118,7 @@
             </div>
 
             <div class="card-footer text-muted d-flex justify-content-between">
-              <span th:text="${post.date}"></span>
+              <span th:text="${#temporals.format(post.date, 'dd-MM-yyyy')}"></span>
               <div>
                 <span th:text="|Likes ${post.likedusers.size()} -|"></span>
                 <span th:text="|Comments: ${post.commentsPost.size()}|"></span>
