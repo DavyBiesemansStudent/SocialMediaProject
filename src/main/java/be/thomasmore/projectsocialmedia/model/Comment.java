@@ -16,6 +16,14 @@ public class Comment {
     @ManyToOne
     private AppUser appUser;
 
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
+    }
+
     public Integer getId() {
         return id;
     }

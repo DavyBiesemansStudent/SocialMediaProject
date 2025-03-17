@@ -1,8 +1,10 @@
 package be.thomasmore.projectsocialmedia.controllers;
 
 import be.thomasmore.projectsocialmedia.model.AppUser;
+import be.thomasmore.projectsocialmedia.model.Comment;
 import be.thomasmore.projectsocialmedia.model.Post;
 import be.thomasmore.projectsocialmedia.repositories.AppUserRepository;
+import be.thomasmore.projectsocialmedia.repositories.CommentRepository;
 import be.thomasmore.projectsocialmedia.repositories.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -10,6 +12,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
@@ -24,6 +28,9 @@ public class PostController {
 
     @Autowired
     private AppUserRepository appUserRepository;
+
+    @Autowired
+    private CommentRepository commentRepository;
 
     @GetMapping({"/postdetails", "/postdetails/{id}"})
     public String postdetails(Model model, @PathVariable Integer id) {
@@ -69,16 +76,12 @@ public class PostController {
         String username = auth.getName();
 
         AppUser user = appUserRepository.findByUsername(username);
-        if (user == null) {
-            return "redirect:/user/login";
-        }
-
-        Optional<Post> postOpt = postRepository.findById(postId);
-        if (postOpt.isEmpty()) {
+        Optional<Post> postFromDB = postRepository.findById(postId);
+        if (postFromDB.isEmpty()) {
             return "redirect:/feed";
         }
 
-        Post post = postOpt.get();
+        Post post = postFromDB.get();
 
         // Toggle like
         if (post.getLikedusers().contains(user)) {
@@ -93,6 +96,33 @@ public class PostController {
         appUserRepository.save(user);
 
         return "redirect:/postdetails/" + post.getId();
+    }
+
+    @PostMapping("/addComment")
+    public String addComment(@RequestParam String commentText,
+                             @RequestParam Integer postId,
+                             Principal principal) {
+        if (principal == null) {
+            return "redirect:/user/login";
+        }
+
+        String username = principal.getName();
+        AppUser appUser = appUserRepository.findByUsername(username);
+
+        Optional<Post> postOptional = postRepository.findById(postId);
+        if (postOptional.isEmpty()) {
+            return "redirect:/feed";
+        }
+        Post post = postOptional.get();
+
+        Comment comment = new Comment();
+        comment.setComment(commentText);
+        comment.setPost(post);
+        comment.setAppUser(appUser);
+
+        commentRepository.save(comment);
+
+        return "redirect:/postdetails/" + postId;
     }
 
 
