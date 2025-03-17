@@ -71,11 +71,12 @@ public class PostController {
     }
 
     @PostMapping("/likePost")
-    public String likePost(@RequestParam Integer postId) { //form field name is postId
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String username = auth.getName();
+    public String likePost(@RequestParam Integer postId,
+                           Principal principal) {
 
+        String username = principal.getName();
         AppUser user = appUserRepository.findByUsername(username);
+
         Optional<Post> postFromDB = postRepository.findById(postId);
         if (postFromDB.isEmpty()) {
             return "redirect:/feed";
@@ -98,22 +99,20 @@ public class PostController {
         return "redirect:/postdetails/" + post.getId();
     }
 
+
     @PostMapping("/addComment")
     public String addComment(@RequestParam String commentText,
                              @RequestParam Integer postId,
                              Principal principal) {
-        if (principal == null) {
-            return "redirect:/user/login";
-        }
 
         String username = principal.getName();
         AppUser appUser = appUserRepository.findByUsername(username);
 
-        Optional<Post> postOptional = postRepository.findById(postId);
-        if (postOptional.isEmpty()) {
+        Optional<Post> postFromDB = postRepository.findById(postId);
+        if (postFromDB.isEmpty()) {
             return "redirect:/feed";
         }
-        Post post = postOptional.get();
+        Post post = postFromDB.get();
 
         Comment comment = new Comment();
         comment.setComment(commentText);
