@@ -17,6 +17,8 @@ public class GlobalControllerAdvice {
     @ModelAttribute
     public void addUserIdToModel(Model model) {
         //no principal because if not logged in then error because principal would be null
+        //contextholder get's the entire object (username, authority, permissions) when user is not logged in return null
+        //principal get the current users identity (username)
         String currentUsername = SecurityContextHolder.getContext().getAuthentication().getName();
         AppUser user = appUserRepository.findByUsername(currentUsername);
         if (user != null) {
