@@ -30,7 +30,7 @@ public class UserController {
     private JdbcUserDetailsManager userDetailsManager;
 
     @GetMapping("/login")
-    public String login(Model model, Principal principal) {
+    public String login(Principal principal) {
         //redirect if logged in user tries to go to login page
         if (principal != null) {
             return "redirect:/feed";
@@ -39,7 +39,7 @@ public class UserController {
     }
 
     @GetMapping("/logout")
-    public String logout(Model model, Principal principal) {
+    public String logout(Principal principal) {
         if (principal == null) {
             return "redirect:/feed";
         }

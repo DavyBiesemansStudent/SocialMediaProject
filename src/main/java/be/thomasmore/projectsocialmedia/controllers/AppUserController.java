@@ -3,15 +3,12 @@ package be.thomasmore.projectsocialmedia.controllers;
 import be.thomasmore.projectsocialmedia.model.AppUser;
 import be.thomasmore.projectsocialmedia.model.Post;
 import be.thomasmore.projectsocialmedia.repositories.AppUserRepository;
-import be.thomasmore.projectsocialmedia.repositories.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-
-import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -23,8 +20,6 @@ public class AppUserController {
     @Autowired
     private AppUserRepository appUserRepository;
 
-    @Autowired
-    private PostRepository postRepository;
 
     @GetMapping({"/userprofile/{id}", "/userprofile"})
     public String userProfile(Model model, @PathVariable(required = false) Integer id) {
@@ -59,6 +54,7 @@ public class AppUserController {
 
     @GetMapping("/likedposts")
     public String likedPosts(Model model) {
+        //contextholder because GetMapping and otherwise you would get an error stating principal is null
         String currentUsername = SecurityContextHolder.getContext().getAuthentication().getName();
         AppUser user = appUserRepository.findByUsername(currentUsername);
         if (user == null) {

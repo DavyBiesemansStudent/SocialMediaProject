@@ -46,12 +46,12 @@ public class PostEditController {
     }
 
     @GetMapping("/postedit/{id}")
-    public String editPostGet(Model model, @PathVariable Integer id){
+    public String editPostGet(){
         return "postedit";
     }
 
     @PostMapping("/postedit/{id}")
-    public String editPost(@PathVariable(required = false) Integer id, Model model, @Valid Post post, BindingResult bindingResult, Principal principal){
+    public String editPost(@PathVariable(required = false) Integer id, @Valid Post post, BindingResult bindingResult, Principal principal){
 
         if(bindingResult.hasErrors()){
             return "postedit";
