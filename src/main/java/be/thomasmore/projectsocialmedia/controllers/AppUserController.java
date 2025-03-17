@@ -5,6 +5,7 @@ import be.thomasmore.projectsocialmedia.model.Post;
 import be.thomasmore.projectsocialmedia.repositories.AppUserRepository;
 import be.thomasmore.projectsocialmedia.repositories.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,7 +28,6 @@ public class AppUserController {
 
     @GetMapping({"/userprofile/{id}", "/userprofile"})
     public String userProfile(Model model, @PathVariable(required = false) Integer id) {
-        model.addAttribute("pageTitle", "Profile");
 
         if (id == null) {
             return "userprofile";
@@ -57,4 +57,16 @@ public class AppUserController {
         return "userlist";
     }
 
+    @GetMapping("/likedposts")
+    public String likedPosts(Model model) {
+        String currentUsername = SecurityContextHolder.getContext().getAuthentication().getName();
+        AppUser user = appUserRepository.findByUsername(currentUsername);
+        if (user == null) {
+            return "redirect:/user/login";
+        }
+
+        model.addAttribute("likedPosts", user.getLikedposts());
+
+        return "likedposts";
+    }
 }
