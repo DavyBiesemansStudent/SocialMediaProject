@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
 <div th:replace="~{fragments/head::head}"></div>
 
 <body class="d-flex flex-column min-vh-100">
@@ -23,7 +23,8 @@
                                       th:disabled="${#authentication.name != post.poster.username}" ></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                        <button type="submit" class="btn btn-primary" th:disabled="${#authentication.name != post.poster.username}">
+                            Save Changes</button>
                         <a href="/postdetails/{id}" th:href="@{/postdetails/{id}(id=${post.id})}" class="btn btn-secondary">Cancel</a>
                     </form>
                 </div>
