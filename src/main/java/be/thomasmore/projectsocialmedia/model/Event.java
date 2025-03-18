@@ -14,6 +14,15 @@ public class Event {
     private String description;
     private String imgPath;
     private String reward;
+    private String conditions;
+
+    public String getConditions() {
+        return conditions;
+    }
+
+    public void setConditions(String conditions) {
+        this.conditions = conditions;
+    }
 
     public Integer getId() {
         return id;

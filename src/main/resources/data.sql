@@ -208,5 +208,9 @@ VALUES
     (9, 2),
     (10, 2);
 
-INSERT INTO Event (title, description, img_path, reward)
-VALUES ('Photography Competition 2025', 'A competition for photographers to showcase their best shots. Submit your most stunning photographs for a chance to win!', '/img/event-image.jpg', 'A $1000 Photography Equipment Voucher');
+INSERT INTO Event (title, description, img_path, reward, conditions)
+VALUES ('Photography Competition 2025',
+        'A competition for photographers to showcase their best shots. Submit your most stunning photographs for a chance to win!',
+        '/img/event-image.jpg',
+        'A $1000 Photography Equipment Voucher',
+        'All pictures must be SFW ;Participants must be 16+ ;Heavy image editing is not allowed, (small changes are allowed) ;All pictures must be original works. No stock photos');

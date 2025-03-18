@@ -30,11 +30,10 @@
       <div class="col-12 col-md-8 mb-4">
         <div class="event-condition">
           <h3>Conditions</h3>
-          <p>-All pictures must be SFW </p>
-          <p>-Participants must be 16+</p>
-          <p>-Heavy image editing is not allowed, (small changes are allowed)</p>
-          <p>-All pictures must be original works. no stock photos</p>
-        </div>
+          <ul> <!-- Split everything into a list with a ; as separator -->
+            <li th:each="condition : ${#strings.listSplit(event.conditions, ';')}" th:text="${condition}"></li>
+          </ul>
+          </div>
       </div>
 
       <div class="col-12 col-md-8 mb-4">
