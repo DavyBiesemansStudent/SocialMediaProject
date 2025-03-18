@@ -72,6 +72,10 @@ public class PostController {
     public String likePost(@RequestParam Integer postId,
                            Principal principal) {
 
+        if (principal == null) {
+            return "redirect:/user/login";
+        }
+
         String username = principal.getName();
         AppUser user = appUserRepository.findByUsername(username);
 
@@ -102,6 +106,10 @@ public class PostController {
     public String addComment(@RequestParam String commentText,
                              @RequestParam Integer postId,
                              Principal principal) {
+
+        if (principal == null) {
+            return "redirect:/user/login";
+        }
 
         String username = principal.getName();
         AppUser appUser = appUserRepository.findByUsername(username);

@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -53,13 +55,12 @@ public class AppUserController {
     }
 
     @GetMapping("/likedposts")
-    public String likedPosts(Model model) {
-        //contextholder because GetMapping and otherwise you would get an error stating principal is null
-        String currentUsername = SecurityContextHolder.getContext().getAuthentication().getName();
-        AppUser user = appUserRepository.findByUsername(currentUsername);
-        if (user == null) {
+    public String likedPosts(Model model, Principal principal) {
+        if (principal == null) {
             return "redirect:/user/login";
         }
+        AppUser user = appUserRepository.findByUsername(principal.getName());
+
         List<Post> likedPosts = new ArrayList<>(user.getLikedposts());
         Collections.reverse(likedPosts);
 

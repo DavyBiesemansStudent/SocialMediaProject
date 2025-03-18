@@ -46,7 +46,13 @@ public class PostEditController {
     }
 
     @GetMapping("/postedit/{id}")
-    public String editPostGet(){
+    public String editPostGet(Principal principal, @Valid Post post, @PathVariable(required = false) Integer id){
+        if (principal == null) {
+            return "redirect:/user/login";
+        }
+        if (!post.getPoster().getUsername().equals(principal.getName())) {
+            return "redirect:/postdetails/" + id;
+        }
         return "postedit";
     }
 
@@ -56,35 +62,33 @@ public class PostEditController {
         if(bindingResult.hasErrors()){
             return "postedit";
         }
-        if (!post.getPoster().getUsername().equals(principal.getName())) {
-            return "redirect:/feed";
-        }
 
         postRepository.save(post);
         return "redirect:/postdetails/" + id;
     }
 
     @GetMapping("/postcreate")
-    public String createPost(Model model) {
+    public String createPost(Model model, Principal principal) {
+        if (principal == null) {
+            return "redirect:/user/login";
+        }
         model.addAttribute("tags", tagRepository.findAll());
         return "postcreate";
     }
 
     @PostMapping("/postcreate")
     public String createPost(@Valid Post post, BindingResult bindingResult, Principal principal, Model model) {
+
+        if (principal == null) {
+            return "redirect:/user/login";
+        }
+
         if (bindingResult.hasErrors()) {
             model.addAttribute("tags", tagRepository.findAll());
             return "postcreate";
         }
 
-        if (principal == null) {
-            return "redirect:/login";
-        }
-
         AppUser user = appUserRepository.findByUsername(principal.getName());
-        if (user == null) {
-            return "redirect:/login";
-        }
 
         post.setPoster(user);
         post.setDate(LocalDate.now());

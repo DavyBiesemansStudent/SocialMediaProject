@@ -39,11 +39,10 @@
             <div class="d-flex align-items-center">
               <form method="post" th:action="@{/likePost}" class="likeForm">
                 <input type="hidden" name="postId" th:value="${post.id}">
-                <button sec:authorize="isAuthenticated()" type="submit" class="btn btn-sm likeButton"
+                <button type="submit" class="btn btn-sm likeButton"
                         th:classappend="${#lists.contains(post.likedusers, user)} ? 'btn-outline-danger' : 'btn-outline-primary'"
                         th:text="${#lists.contains(post.likedusers, user)} ? '❤️ Liked' : '🤍 Like'">
                 </button>
-                <a sec:authorize="!isAuthenticated()" th:href="@{/user/login}" class="btn btn-sm btn-outline-primary likeButton">🤍 Like</a>
               </form>
               <span class="likeCounter ms-2" th:text="${post.likedusers.size()}">0</span>
             </div>
@@ -56,8 +55,7 @@
               <div class="mb-3">
                 <textarea name="commentText" class="form-control" placeholder="Add a comment..." rows="2" maxlength="1000" required></textarea>
               </div>
-              <button sec:authorize="isAuthenticated()" type="submit" class="btn btn-sm btn-primary mb-1">Post Comment</button>
-              <a sec:authorize="!isAuthenticated()" th:href="@{/user/login}" class="btn btn-sm btn-primary mb-1">Post Comment</a>
+              <button type="submit" class="btn btn-sm btn-primary mb-1">Post Comment</button>
             </form>
 
             <h6 th:text="|Comments: (${comments.size()})|"></h6>
