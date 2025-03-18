@@ -270,9 +270,41 @@ body {
 /* TAGS */
 
 /* TAG DETAILS */
-.tagDetails h2{
+.tag-title {
+    font-size: 32px;
+    font-weight: bold;
     color: white;
+    margin-bottom: 20px;
 }
+
+.tag-image {
+    width: 100%;
+    max-width: 400px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+
+.post-count {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ccc;
+    margin-top: 15px;
+}
+
+.tag-details-content{
+    background-color: #863103;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.tag-descriptionextended {
+    font-size: 18px;
+    color: #ddd;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
 /* TAG DETAILS */
 
 @media screen and (max-width: 765px){

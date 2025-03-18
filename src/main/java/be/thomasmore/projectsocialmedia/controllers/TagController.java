@@ -23,6 +23,7 @@ public class TagController {
         return "taglist";
     }
 
+    //extended description attribute voor tag
     @GetMapping({"/tagdetails", "/tagdetails/{id}"})
     public String tagdetails(@PathVariable Integer id, Model model) {
         if (id == null) {

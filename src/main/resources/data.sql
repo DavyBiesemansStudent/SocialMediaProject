@@ -181,15 +181,17 @@ INSERT INTO comment (comment, app_user_id, post_id) VALUES ('This is comment #1 
 INSERT INTO comment (comment, app_user_id, post_id) VALUES ('This is comment #2 on post 10', 9, 10);
 INSERT INTO comment (comment, app_user_id, post_id) VALUES ('This is comment #3 on post 10', 2, 10);
 
-INSERT INTO TAG (name, description) VALUES ('Sports', 'Everything related to sport');
-INSERT INTO TAG (name, description) VALUES ('Technology', 'Latest trends and innovations in the tech world');
-INSERT INTO TAG (name, description) VALUES ('Music', 'Everything related to music, from genres to artists');
-INSERT INTO TAG (name, description) VALUES ('Travel', 'Explore destinations, tips, and travel experiences');
-INSERT INTO TAG (name, description) VALUES ('Food', 'Recipes, cooking tips, and culinary delights');
-INSERT INTO TAG (name, description) VALUES ('Health', 'Health tips, fitness, and mental well-being');
-INSERT INTO TAG (name, description) VALUES ('Literature', 'Everything written, books, comics and novels');
-INSERT INTO TAG (name, description) VALUES ('Film', 'Discussions about movies, shows and everything else video');
-INSERT INTO TAG (name, description) VALUES ('Event', 'Announcements, meetups, and trending social gatherings');
+INSERT INTO TAG (name, description, descriptionExtended, img_path) VALUES
+    ('Sports', 'Everything related to sport', 'Covers all aspects of sports, including athletes, training tips, and sports news.', '/img/tag-sports.jpg'),
+    ('Technology', 'Latest trends and innovations in the tech world', 'Stay updated on the newest gadgets, software, AI advancements, and technological breakthroughs.', '/img/tag-technology.webp'),
+    ('Music', 'Everything related to music, from genres to artists', 'Explore music history, artist spotlights, trending genres, and album reviews.', '/img/tag-music.jpg'),
+    ('Travel', 'Explore destinations, tips, and travel experiences', 'Discover the world with travel guides, cultural insights, and essential travel hacks.', '/img/tag-travel.jpg'),
+    ('Food', 'Recipes, cooking tips, and culinary delights', 'From home-cooked meals to exotic cuisines, find delicious recipes and expert cooking advice.', '/img/tag-food.jpg'),
+    ('Health', 'Health tips, fitness, and mental well-being', 'Get insights on physical fitness, mental health strategies, nutrition, and overall wellness.', '/img/tag-health.webp'),
+    ('Literature', 'Everything written, books, comics and novels', 'Discuss classic literature, modern novels, poetry, and graphic storytelling.', '/img/tag-literature.jpg'),
+    ('Film', 'Discussions about movies, shows and everything else video', 'Engage in movie reviews, TV show recommendations, filmmaking techniques, and industry trends.', '/img/tag-film.jpg'),
+    ('Event', 'Announcements, meetups, and trending social gatherings', 'Stay informed on upcoming events, networking opportunities, and cultural happenings.', '/img/tag-event.jpg');
+
 
 
 INSERT INTO post_tags_post (posts_id, tags_post_id)

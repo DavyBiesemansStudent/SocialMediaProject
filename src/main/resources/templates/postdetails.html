@@ -54,7 +54,7 @@
             <form method="post" th:action="@{/addComment}" class="commentForm">
               <input type="hidden" name="postId" th:value="${post.id}">
               <div class="mb-3">
-                <textarea name="commentText" class="form-control" placeholder="Add a comment..." rows="2" required></textarea>
+                <textarea name="commentText" class="form-control" placeholder="Add a comment..." rows="2" maxlength="1000" required></textarea>
               </div>
               <button sec:authorize="isAuthenticated()" type="submit" class="btn btn-sm btn-primary mb-1">Post Comment</button>
               <a sec:authorize="!isAuthenticated()" th:href="@{/user/login}" class="btn btn-sm btn-primary mb-1">Post Comment</a>

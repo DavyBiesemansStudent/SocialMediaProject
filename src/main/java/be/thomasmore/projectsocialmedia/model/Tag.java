@@ -12,9 +12,28 @@ public class Tag {
 
     private String name;
     private String description;
+    @Column(length = 2000)
+    private String descriptionextended;
+    private String imgPath;
 
     @ManyToMany(mappedBy = "tagsPost")
     private Collection<Post> posts;
+
+    public String getDescriptionextended() {
+        return descriptionextended;
+    }
+
+    public void setDescriptionextended(String descriptionextended) {
+        this.descriptionextended = descriptionextended;
+    }
+
+    public String getImgPath() {
+        return imgPath;
+    }
+
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
+    }
 
     public Collection<Post> getPosts() {
         return posts;

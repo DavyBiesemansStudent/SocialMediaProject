@@ -7,17 +7,57 @@
 
 <div class="container py-4 flex-grow-1">
   <main th:if="${tag}">
-    <div class="row justify-content-center" >
-      <div class="tagDetails">
-        <h2 th:text="${tag.name}"></h2>
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-9">
+        <div class="row align-items-center text-center tag-details-content">
+          <div class="col-md-6">
+            <img th:src="${tag.imgPath}" alt="Tag Image" class="tag-image">
+          </div>
+          <div class="col-md-6">
+            <h2 class="tag-title text-center" th:text="${tag.name}"></h2>
+            <p class="tag-descriptionextended text-center" th:text="${tag.descriptionextended}"></p>
+            <p class="post-count">
+              Used in <span th:text="${tag.posts.size()}"></span> posts
+            </p>
+          </div>
+        </div>
+
+        <!-- Posts Containing the Tag -->
+        <h2 th:text="|Posts in ${tag.name}:|" class="mt-4" style="color: white;"></h2>
+        <div th:if="${#lists.isEmpty(tag.posts)}">
+          <h2 style="color: white" class="text-center">No posts found!</h2>
+        </div>
+        <div th:unless="${#lists.isEmpty(tag.posts)}">
+          <div class="row justify-content-center" >
+            <div class="col-12 col-md-6 mb-4" th:each="post : ${tag.posts}">
+              <a th:href="@{|/postdetails/*{post.id}|}" class="text-decoration-none ">
+                <div class="feedCards card">
+                  <img th:src="${post.imgPath}" alt="Post Image" class="card-img-top">
+
+                  <div class="card-body">
+                    <h5 class="card-title" th:text="${post.title}"></h5>
+                    <p class="mb-0">
+                      <span th:each="tag : ${post.tagsPost}" th:class="'tag-' + ${tag.name.toLowerCase()}" th:text="|${tag.name} |"></span>
+                    </p>
+                  </div>
+
+                  <div class="card-footer d-flex justify-content-between">
+                    <span th:text="${#temporals.format(post.date, 'dd-MM-yyyy')}"></span>
+                    <div>
+                      <span th:text="|Likes ${post.likedusers.size()} -|"></span>
+                      <span th:text="|Comments: ${post.commentsPost.size()}|"></span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </main>
-
   <main th:unless="${tag}">
-    <div class="tagDetails">
-      <h2>No valid tag found!</h2>
-    </div>
+    <h2 style="color: white" class="text-center">Tag not found!</h2>
   </main>
 </div>
 
