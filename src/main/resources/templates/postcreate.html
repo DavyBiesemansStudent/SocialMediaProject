@@ -27,8 +27,8 @@
             </div>
 
             <div class="mb-3">
-              <label for="optionalTags" class="form-label">Tags</label>
-              <select id="optionalTags" class="form-control" th:field="*{tagsPost}" multiple required>
+              <label for="tags" class="form-label">Tags</label>
+              <select id="tags" class="form-control" th:field="*{tagsPost}" multiple required>
                 <option th:each="tag : ${tags}" th:value="${tag.id}" th:text="${tag.name}"></option>
               </select>
             </div>
