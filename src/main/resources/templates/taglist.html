@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<div th:replace="~{fragments/head::head}"></div>
+
+<body class="d-flex flex-column min-vh-100">
+<div th:replace="~{fragments/header :: navbar}"></div>
+
+<div class="container py-4 flex-grow-1">
+    <main>
+        <div class="row justify-content-center" >
+            <div class="special-tags">
+                <h3>Special Tags:</h3>
+                <div class="col-12" th:each="tag : ${tags}" th:if="${tag.name == 'Event'}">
+                    <div class="tag-card" th:classappend="'tag-' + ${tag.name.toLowerCase()} + '-list'">
+                        <h2 class="tag-name" th:text="${tag.name}"></h2>
+                        <p class="tag-description" th:text="${tag.description}"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="base-tags">
+                <h3>Base Tags:</h3>
+                <div class="col-12" th:each="tag : ${tags}" th:if="${tag.name != 'Event'}">
+                    <div class="tag-card" th:classappend="'tag-' + ${tag.name.toLowerCase()} + '-list'">
+                        <h2 class="tag-name" th:text="${tag.name}"></h2>
+                        <p class="tag-description" th:text="${tag.description}"></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+</div>
+
+<footer class="mt-auto">
+    <div th:replace="~{fragments/footer::footer}"></div>
+</footer>
+</body>
+</html>

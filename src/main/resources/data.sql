@@ -189,6 +189,7 @@ INSERT INTO TAG (name, description) VALUES ('Food', 'Recipes, cooking tips, and 
 INSERT INTO TAG (name, description) VALUES ('Health', 'Health tips, fitness, and mental well-being');
 INSERT INTO TAG (name, description) VALUES ('Literature', 'Everything written, books, comics and novels');
 INSERT INTO TAG (name, description) VALUES ('Film', 'Discussions about movies, shows and everything else video');
+INSERT INTO TAG (name, description) VALUES ('Event', 'Announcements, meetups, and trending social gatherings');
 
 
 INSERT INTO post_tags_post (posts_id, tags_post_id)
