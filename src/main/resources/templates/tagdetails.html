@@ -14,11 +14,12 @@
             <img th:src="${tag.imgPath}" alt="Tag Image" class="tag-image">
           </div>
           <div class="col-md-6">
-            <h2 class="tag-title text-center" th:text="${tag.name}"></h2>
-            <p class="tag-descriptionextended text-center" th:text="${tag.descriptionextended}"></p>
+            <h2 class="tag-title" th:text="${tag.name}"></h2>
+            <p class="tag-descriptionextended" th:text="${tag.descriptionextended}"></p>
             <p class="post-count">
               Used in <span th:text="${tag.posts.size()}"></span> posts
             </p>
+            <p class="tag-eventlink" th:if="${tag.name == 'Event'}">For more info see <a th:href="@{/eventdetails}" th:text="|event details.|"></a></p>
           </div>
         </div>
 

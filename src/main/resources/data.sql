@@ -190,7 +190,7 @@ INSERT INTO TAG (name, description, descriptionExtended, img_path) VALUES
     ('Health', 'Health tips, fitness, and mental well-being', 'Get insights on physical fitness, mental health strategies, nutrition, and overall wellness.', '/img/tag-health.webp'),
     ('Literature', 'Everything written, books, comics and novels', 'Discuss classic literature, modern novels, poetry, and graphic storytelling.', '/img/tag-literature.jpg'),
     ('Film', 'Discussions about movies, shows and everything else video', 'Engage in movie reviews, TV show recommendations, filmmaking techniques, and industry trends.', '/img/tag-film.jpg'),
-    ('Event', 'Announcements, meetups, and trending social gatherings', 'Stay informed on upcoming events, networking opportunities, and cultural happenings.', '/img/tag-event.jpg');
+    ('Event', 'Themed events, meetups, and generous rewards', 'Stay informed on current events, posts related to said events, and discussions surrounding events.', '/img/tag-event.jpg');
 
 
 
@@ -207,3 +207,6 @@ VALUES
     (8,5),
     (9, 2),
     (10, 2);
+
+INSERT INTO Event (title, description, img_path, reward)
+VALUES ('Photography Competition 2025', 'A competition for photographers to showcase their best shots. Submit your most stunning photographs for a chance to win!', '/img/event-image.jpg', 'A $1000 Photography Equipment Voucher');

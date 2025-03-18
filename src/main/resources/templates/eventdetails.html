@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<div th:replace="~{fragments/head::head}"></div>
+
+<body class="d-flex flex-column min-vh-100">
+<div th:replace="~{fragments/header :: navbar}"></div>
+
+<div class="container py-4 flex-grow-1">
+  <main>
+    <div class="row justify-content-center">
+
+      <!-- Content -->
+      <div class="col-12 col-md-8 mb-4">
+        <div class="event-detail">
+          <img th:src="${event.imgPath}" alt="Photography Event Image" class="img-fluid rounded mb-3">
+
+          <h2 th:text="${event.title}"></h2>
+          <p th:text="${event.description}"></p>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-8 mb-4">
+        <div class="event-enter">
+          <h3>How to enter</h3>
+          <p>To enter the event you simply need to create a post with the <span class="tag-event">Event</span>tag</p>
+        </div>
+      </div>
+
+
+      <div class="col-12 col-md-8 mb-4">
+        <div class="event-condition">
+          <h3>Conditions</h3>
+          <p>-All pictures must be SFW </p>
+          <p>-Participants must be 16+</p>
+          <p>-Heavy image editing is not allowed, (small changes are allowed)</p>
+          <p>-All pictures must be original works. no stock photos</p>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-8 mb-4">
+        <div class="event-voting">
+          <h3>Voting</h3>
+          <p>The winner will be determined based on the number of likes received.</p>
+        </div>
+      </div>
+
+      <!-- Reward Information -->
+      <div class="col-12 col-md-8 mb-4">
+        <div class="event-reward">
+          <h3>Reward</h3>
+          <p>Winner's Reward: <span th:text="${event.reward}"></span></p>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<footer class="mt-auto">
+  <div th:replace="~{fragments/footer::footer}"></div>
+</footer>
+</body>
+</html>

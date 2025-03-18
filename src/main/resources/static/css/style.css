@@ -288,7 +288,7 @@ body {
 .post-count {
     font-size: 18px;
     font-weight: bold;
-    color: #ccc;
+    color: white;
     margin-top: 15px;
 }
 
@@ -300,12 +300,78 @@ body {
 
 .tag-descriptionextended {
     font-size: 18px;
-    color: #ddd;
+    color: white;
     max-width: 800px;
     margin: 20px auto;
 }
 
+.tag-eventlink{
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    margin-top: 15px;
+}
+
+.tag-eventlink a{
+    color: white;
+}
+
+.tag-eventlink a:hover{
+    color: orange;
+}
+
 /* TAG DETAILS */
+
+/* EVENT DETAILS */
+.event-detail{
+    color: white;
+    background-color: #863103;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.event-enter{
+    color: white;
+    background-color: #863103;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.event-condition{
+    color: white;
+    background-color: #863103;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.event-voting{
+    color: white;
+    background-color: #863103;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.event-reward{
+    color: white;
+    border: 5px solid gold;
+    background-color: #863103;
+    border-radius: 1rem;
+    padding: 1rem;
+    animation: breathingBorder 3s ease-in-out infinite alternate;
+}
+
+@keyframes breathingBorder {
+    0% {
+        border-color: #ff7e5f;
+    }
+    50%{
+        border-color: #6a11cb;
+    }
+    100% {
+        border-color: #feb47b;
+    }
+}
+/* EVENT DETAILS */
 
 @media screen and (max-width: 765px){
     .imgInfo img{
