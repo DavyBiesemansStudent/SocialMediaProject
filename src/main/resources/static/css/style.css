@@ -96,7 +96,7 @@ body {
 
 /*POST*/
 
-/* HOME */
+/* FEED */
 .feedCards{
     background-color: #451800;
     color: white;
@@ -115,7 +115,7 @@ body {
     border: 0.4rem solid #863103;
 }
 
-/* HOME */
+/* FEED */
 
 /* TAGS */
 .tag-card {
@@ -147,6 +147,13 @@ body {
     color: rgba(255, 255, 255, 0.85);
 }
 
+.tagCardLink{
+    text-decoration: none;
+}
+
+.special-tags h3, .base-tags h3{
+    color: white;
+}
 
 .tag-film,
 .tag-food,
@@ -261,6 +268,12 @@ body {
     }
 }
 /* TAGS */
+
+/* TAG DETAILS */
+.tagDetails h2{
+    color: white;
+}
+/* TAG DETAILS */
 
 @media screen and (max-width: 765px){
     .imgInfo img{

@@ -11,22 +11,27 @@
             <div class="special-tags">
                 <h3>Special Tags:</h3>
                 <div class="col-12" th:each="tag : ${tags}" th:if="${tag.name == 'Event'}">
-                    <div class="tag-card" th:classappend="'tag-' + ${tag.name.toLowerCase()} + '-list'">
-                        <h2 class="tag-name" th:text="${tag.name}"></h2>
-                        <p class="tag-description" th:text="${tag.description}"></p>
-                    </div>
+                    <a th:href="@{/tagdetails/{id}(id=${tag.id})}" class="tagCardLink">
+                        <div class="tag-card" th:classappend="'tag-' + ${tag.name.toLowerCase()} + '-list'">
+                            <h2 class="tag-name" th:text="${tag.name}"></h2>
+                            <p class="tag-description" th:text="${tag.description}"></p>
+                        </div>
+                    </a>
                 </div>
             </div>
 
             <div class="base-tags">
                 <h3>Base Tags:</h3>
                 <div class="col-12" th:each="tag : ${tags}" th:if="${tag.name != 'Event'}">
-                    <div class="tag-card" th:classappend="'tag-' + ${tag.name.toLowerCase()} + '-list'">
-                        <h2 class="tag-name" th:text="${tag.name}"></h2>
-                        <p class="tag-description" th:text="${tag.description}"></p>
-                    </div>
+                    <a th:href="@{/tagdetails/{id}(id=${tag.id})}" class="tagCardLink">
+                        <div class="tag-card" th:classappend="'tag-' + ${tag.name.toLowerCase()} + '-list'">
+                            <h2 class="tag-name" th:text="${tag.name}"></h2>
+                            <p class="tag-description" th:text="${tag.description}"></p>
+                        </div>
+                    </a>
                 </div>
             </div>
+
 
         </div>
     </main>

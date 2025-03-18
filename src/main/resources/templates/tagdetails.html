@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<div th:replace="~{fragments/head::head}"></div>
+
+<body class="d-flex flex-column min-vh-100">
+<div th:replace="~{fragments/header :: navbar}"></div>
+
+<div class="container py-4 flex-grow-1">
+  <main th:if="${tag}">
+    <div class="row justify-content-center" >
+      <div class="tagDetails">
+        <h2 th:text="${tag.name}"></h2>
+      </div>
+    </div>
+  </main>
+
+  <main th:unless="${tag}">
+    <div class="tagDetails">
+      <h2>No valid tag found!</h2>
+    </div>
+  </main>
+</div>
+
+<footer class="mt-auto">
+  <div th:replace="~{fragments/footer::footer}"></div>
+</footer>
+</body>
+</html>
