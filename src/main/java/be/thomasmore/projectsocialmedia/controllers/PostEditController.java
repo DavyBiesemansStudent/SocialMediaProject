@@ -46,7 +46,7 @@ public class PostEditController {
     }
 
     @GetMapping("/postedit/{id}")
-    public String editPostGet(Principal principal, @Valid Post post, @PathVariable(required = false) Integer id){
+    public String editPost(Principal principal, @Valid Post post, @PathVariable(required = false) Integer id){
         if (principal == null) {
             return "redirect:/user/login";
         }
@@ -57,7 +57,7 @@ public class PostEditController {
     }
 
     @PostMapping("/postedit/{id}")
-    public String editPost(@PathVariable(required = false) Integer id, @Valid Post post, BindingResult bindingResult, Principal principal){
+    public String editPost(@PathVariable(required = false) Integer id, @Valid Post post, BindingResult bindingResult){
 
         if(bindingResult.hasErrors()){
             return "postedit";
@@ -78,10 +78,6 @@ public class PostEditController {
 
     @PostMapping("/postcreate")
     public String createPost(@Valid Post post, BindingResult bindingResult, Principal principal, Model model) {
-
-        if (principal == null) {
-            return "redirect:/user/login";
-        }
 
         if (bindingResult.hasErrors()) {
             model.addAttribute("tags", tagRepository.findAll());
