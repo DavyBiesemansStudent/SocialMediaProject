@@ -12,8 +12,8 @@ import java.util.List;
 public interface PostRepository extends CrudRepository<Post, Integer> {
     @Query("SELECT p FROM Post p " +
             "JOIN p.tagsPost t " +
-            "WHERE (:title IS NULL OR p.title LIKE %:title%) " +
-            "AND (:description IS NULL OR p.description LIKE %:description%) " +
+            "WHERE (:title IS NULL OR p.title ILIKE CONCAT ('%', :title, '%')) " +
+            "AND (:description IS NULL OR p.description ILIKE CONCAT ('%', :description, '%')) " +
             "AND (:tag IS NULL OR t.name = :tag) " +
             "AND (:date IS NULL OR p.date = :date) " +
             "AND (:minLikes IS NULL OR (SELECT COUNT(l) FROM p.likedusers l) >= :minLikes) " +

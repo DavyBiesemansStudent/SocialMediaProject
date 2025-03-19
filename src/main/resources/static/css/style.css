@@ -2,9 +2,31 @@ body {
     background-color: #291404;
 }
 
-.userlistNames{
-    font-size: 1.5rem;
+/*PROFILE LIST*/
+.user-card-list {
+    background-color: #381502;
+    border-radius: 8px;
+    transition: background-color 0.2s;
 }
+
+.user-card-list:hover {
+    background-color: #632705;
+}
+
+.profile-picture-list {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border: 2px solid #ff4500;
+}
+
+.username-list {
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+/*PROFILE LIST*/
 
 /*PROFILE PAGE*/
 .userInfo{

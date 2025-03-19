@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
 import java.util.ArrayList;
@@ -45,10 +46,11 @@ public class AppUserController {
     }
 
     @GetMapping("/userlist")
-    public String userList(Model model) {
+    public String userList(Model model,
+                           @RequestParam (required = false)String keyword) {
         model.addAttribute("pageTitle", "Profile list");
 
-        final Iterable<AppUser> appUsers = appUserRepository.findAll();
+        final Iterable<AppUser> appUsers = appUserRepository.findByKeyword(keyword);
         model.addAttribute("appUsers", appUsers);
         return "userlist";
     }
