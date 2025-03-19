@@ -37,11 +37,14 @@ public class PostController {
         }
 
         Optional<Post> postFromDB = postRepository.findById(id);
+        long count = postRepository.count();
 
         if(postFromDB.isPresent()){
             model.addAttribute("post", postFromDB.get());
             model.addAttribute("poster", postFromDB.get().getPoster());
             model.addAttribute("comments", postFromDB.get().getCommentsPost());
+            model.addAttribute("prevId", id > 1 ? id - 1 : count);
+            model.addAttribute("nextId", id < count ? id + 1 : 1);
         }
 
         return "postdetails";

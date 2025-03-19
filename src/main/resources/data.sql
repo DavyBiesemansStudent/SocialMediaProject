@@ -93,16 +93,16 @@ VALUES ('techgeek25', 'Tech Geek', 'Tech enthusiast with a passion for AI, machi
 
 INSERT INTO post (title, description, poster_id, date, img_Path)
 VALUES
-    ('First Post', 'This is my first post!', 1, '2024-02-01', 'https://i.imgur.com/nMSZRXh.jpeg'),
-    ('Sunset View', 'Captured a beautiful sunset today.', 2, '2024-02-02', 'https://i.imgur.com/wX5bRgj.jpeg'),
+    ('First Post', 'This is my first post!', 10, '2024-02-01', 'https://i.imgur.com/nMSZRXh.jpeg'),
+    ('Sunset View', 'Captured a beautiful sunset today.', 9, '2024-02-02', 'https://i.imgur.com/wX5bRgj.jpeg'),
     ('Workout Motivation', 'Hit the gym early today!', 3, '2024-02-03', 'https://images.unsplash.com/photo-1545346315-f4c47e3e1b55?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
     ('Book Recommendation', 'Just finished reading an amazing book.', 4, '2024-02-04', 'https://images.unsplash.com/photo-1629992101753-56d196c8aabb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Ym9vayUyMGNvdmVyfGVufDB8fDB8fHww'),
-    ('Coding Journey', 'Learning Java and loving it!', 5, '2024-02-05', 'https://i.imgur.com/7LxyIjq.jpeg'),
+    ('Coding Journey', 'Learning Java and loving it!', 11, '2024-02-05', 'https://i.imgur.com/7LxyIjq.jpeg'),
     ('Weekend Getaway', 'Had a relaxing trip to the mountains.', 6, '2024-02-06', 'https://i.imgur.com/x7Mas4c.jpeg'),
     ('Movie Night', 'Watched an awesome movie today.', 7, '2024-02-07', 'https://i.imgur.com/A41t0Fc.jpeg'),
-    ('New Recipe', 'Tried making homemade pasta today!', 8, '2024-02-08', 'https://i.imgur.com/ImsP5oV.jpeg'),
-    ('Tech News', 'Exciting updates in the AI world!', 9, '2024-02-09', 'https://i.imgur.com/5SZ5fAN.jpeg'),
-    ('Exploring Quantum Computing', 'A deep dive into the future of computing with quantum mechanics.', 10, '2024-02-10', 'https://i.imgur.com/uv9PGD2.jpeg'),
+    ('New Recipe', 'Tried making homemade pasta today!', 4, '2024-02-08', 'https://i.imgur.com/ImsP5oV.jpeg'),
+    ('Tech News', 'Exciting updates in the AI world!', 2, '2024-02-09', 'https://i.imgur.com/5SZ5fAN.jpeg'),
+    ('Exploring Quantum Computing', 'A deep dive into the future of computing with quantum mechanics.', 1, '2024-02-10', 'https://i.imgur.com/uv9PGD2.jpeg'),
     ('Fitness Progress', 'Getting stronger every day!', 3, '2024-02-11', 'https://i.imgur.com/blAcNWq.jpeg'),
     ('Gamer’s Paradise', 'Just unlocked a new level in my favorite game!', 7, '2024-02-12', 'https://i.imgur.com/zJOCn8d.png'),
     ('Artist’s Creation', 'Finished a new painting, feel so proud of it!', 8, '2024-02-13', 'https://i.imgur.com/exNiGpG.jpeg'),
