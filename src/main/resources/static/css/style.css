@@ -29,17 +29,20 @@ body {
 /*PROFILE LIST*/
 
 /*PROFILE PAGE*/
-.userInfo{
+.profile-card {
     background-color: #451800;
     color: white;
-    border-radius: 1rem;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-.imgInfo img{
-    margin: 8% 0;
-    width: 250px;
-    height: 250px;
+.profile-card img {
+    width: 150px;
+    height: 150px;
     object-fit: cover;
+    border: 3px solid #ff4500;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 /*PROFILE PAGE*/
 
@@ -395,17 +398,4 @@ body {
 }
 /* EVENT DETAILS */
 
-@media screen and (max-width: 765px){
-    .imgInfo img{
-        margin: 4% 0;
-        width: 150px;
-        height: 150px;
-    }
-}
-
-@media screen and (max-width: 991px){
-    .textInfo{
-        margin-top: 4%;
-    }
-}
 

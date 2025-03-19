@@ -72,10 +72,8 @@
   </main>
 </div>
 
-<main th:unless="${post}">
-  <div class="container text-center">
-    <h2 style="color: white;">No valid post found!</h2>
-  </div>
+<main class="container" th:unless="${post}">
+    <h1 class="text-center text-light">No valid post found!</h1>
 </main>
 
 

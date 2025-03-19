@@ -7,7 +7,7 @@
 <div th:replace="~{fragments/header :: navbar}"></div>
 
 <div class="container mt-4 flex-grow-1">
-  <h2 class="text-white">Profile List</h2>
+  <h2 class="text-white">User List</h2>
   <form th:action="@{|/userlist|}">
     <div class="input-group gap-2">
       <input type="search" id="keyword" name="keyword" th:value="${param.keyword}" class="form-control rounded-2" placeholder="Search...">

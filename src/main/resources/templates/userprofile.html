@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-<div th:replace="~{fragments/head::head}"></div>
-
+<head>
+    <div th:replace="~{fragments/head::head}"></div>
+</head>
 <body class="d-flex flex-column min-vh-100">
 <div th:replace="~{fragments/header :: navbar}"></div>
 
 <div class="container flex-grow-1">
     <main class="container" th:object="${appUser}" th:if="${appUser}">
-        <div class="row d-flex justify-content-center align-items-center userInfo">
-            <div class="col-12 col-md-5 text-start textInfo">
-                <h1 th:text="*{username}"></h1>
-                <p th:text="|id: *{id}|" style="opacity: 50%"></p>
-                <h1>Bio:</h1>
-                <p th:text="*{bio}"></p>
+        <div class="row profile-card">
+            <div class="col-12 d-flex justify-content-center align-items-center text-center text-md-start">
+                <img th:src="*{profilePictureUrl}" alt="Profile Picture" class="rounded-circle me-3">
+                <div>
+                    <h1 th:text="*{username}"></h1>
+                    <p th:text="|ID: *{id}|"  style="opacity: 50%"></p>
+                </div>
             </div>
-            <div class="col-12 col-md-5 text-center imgInfo">
-                <img th:src="*{profilePictureUrl}" alt="" class="rounded-circle">
-            </div>
+                <div class="col-12">
+                    <h2>Bio:</h2>
+                    <p th:text="*{bio}"></p>
+                </div>
         </div>
 
         <div class="row">
@@ -52,10 +55,11 @@
                 </div>
             </div>
         </div>
+
     </main>
 
-    <main class="container m-3 d-flex justify-content-center align-items-center" th:object="${appUser}" th:unless="${appUser}">
-        <h2 style="color: white;">No valid user found!</h2>
+    <main th:unless="${appUser}">
+        <h2 class="text-center text-light">No valid user found!</h2>
     </main>
 </div>
 
