@@ -64,6 +64,7 @@ public class PostController {
             parsedDate = LocalDate.parse(date);  // Parse the date
         }
 
+        //no list conversion needed because findByFilter returns a List
         List<Post> posts = postRepository.findByFilter(title, description, tag, parsedDate, minLikes, maxLikes);
         Collections.reverse(posts); //(most recent first)
 
@@ -79,14 +80,14 @@ public class PostController {
             return "redirect:/user/login";
         }
 
-        String username = principal.getName();
-        AppUser user = appUserRepository.findByUsername(username);
+        AppUser user = appUserRepository.findByUsername(principal.getName());
 
         Optional<Post> postFromDB = postRepository.findById(postId);
         if (postFromDB.isEmpty()) {
             return "redirect:/feed";
         }
 
+        //get the current post object
         Post post = postFromDB.get();
 
         // Toggle like
@@ -101,7 +102,7 @@ public class PostController {
         postRepository.save(post);
         appUserRepository.save(user);
 
-        return "redirect:/postdetails/" + post.getId();
+        return "redirect:/postdetails/" + postId;
     }
 
 
@@ -114,8 +115,7 @@ public class PostController {
             return "redirect:/user/login";
         }
 
-        String username = principal.getName();
-        AppUser appUser = appUserRepository.findByUsername(username);
+        AppUser appUser = appUserRepository.findByUsername(principal.getName());
 
         Optional<Post> postFromDB = postRepository.findById(postId);
         if (postFromDB.isEmpty()) {

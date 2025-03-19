@@ -46,7 +46,7 @@ public class PostEditController {
     }
 
     @GetMapping("/postedit/{id}")
-    public String editPost(Principal principal, @Valid Post post, @PathVariable(required = false) Integer id){
+    public String editPost(Principal principal, Post post, @PathVariable Integer id){
         if (principal == null) {
             return "redirect:/user/login";
         }
@@ -57,7 +57,10 @@ public class PostEditController {
     }
 
     @PostMapping("/postedit/{id}")
-    public String editPost(@PathVariable(required = false) Integer id, @Valid Post post, BindingResult bindingResult){
+    public String editPost(@PathVariable Integer id, @Valid Post post, BindingResult bindingResult, Principal principal){
+        if (principal == null) {
+            return "redirect:/user/login";
+        }
 
         if(bindingResult.hasErrors()){
             return "postedit";
@@ -74,15 +77,23 @@ public class PostEditController {
         if (principal == null) {
             return "redirect:/user/login";
         }
+
         model.addAttribute("tags", tagRepository.findAll());
         return "postcreate";
     }
 
     @PostMapping("/postcreate")
     public String createPost(@Valid Post post, BindingResult bindingResult, Principal principal, Model model) {
+        if (principal == null) {
+            return "redirect:/user/login";
+        }
 
+        //valid -> check for size, notnull, etc
+        //bindingresult -> has errors if valid fails
         if (bindingResult.hasErrors()) {
             model.addAttribute("tags", tagRepository.findAll());
+            //add tags so they can be displayed on the form again
+            //when error: get data does not persist
             return "postcreate";
         }
 

@@ -3,11 +3,9 @@ package be.thomasmore.projectsocialmedia.controllers;
 import be.thomasmore.projectsocialmedia.model.AppUser;
 import be.thomasmore.projectsocialmedia.model.Post;
 import be.thomasmore.projectsocialmedia.repositories.AppUserRepository;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -61,6 +59,7 @@ public class AppUserController {
         }
         AppUser user = appUserRepository.findByUsername(principal.getName());
 
+        //arraylist because you're converting from a collection to a list
         List<Post> likedPosts = new ArrayList<>(user.getLikedposts());
         Collections.reverse(likedPosts);
 
@@ -83,8 +82,11 @@ public class AppUserController {
     public String updateSettings(Principal principal,
                                  @RequestParam String bio,
                                  @RequestParam String profilePictureUrl) {
+        if (principal == null) {
+            return "redirect:/user/login";
+        }
 
-        //set because the user (principal) is not the same as AppUser
+        //set because the user (principal) is not the same as AppUser and thus not automatically bound
         //AppUser is linked to User
         AppUser appuser = appUserRepository.findByUsername(principal.getName());
         appuser.setBio(bio);

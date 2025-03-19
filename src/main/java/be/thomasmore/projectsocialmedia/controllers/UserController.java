@@ -70,11 +70,11 @@ public class UserController {
         }
 
         UserDetails user = org.springframework.security.core.userdetails.User
-                .withUsername(username)
-                .password(passwordEncoder.encode(password))
-                .roles("USER")
-                .build();
-        userDetailsManager.createUser(user);
+                .withUsername(username) //set username
+                .password(passwordEncoder.encode(password)) //encode password
+                .roles("USER") //set role
+                .build(); //build the object (UserDetails)
+        userDetailsManager.createUser(user); //store the user
 
         AppUser newAppUser = new AppUser();
         newAppUser.setName(name);
