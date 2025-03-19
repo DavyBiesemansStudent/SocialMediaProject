@@ -80,12 +80,9 @@ public class AppUserController {
     }
 
     @PostMapping("/settings")
-    public String updateSettings(@Valid AppUser appUser, BindingResult bindingResult, Principal principal,
+    public String updateSettings(Principal principal,
                                  @RequestParam String bio,
                                  @RequestParam String profilePictureUrl) {
-        if (bindingResult.hasErrors()) {
-            return "settings";
-        }
 
         //set because the user (principal) is not the same as AppUser
         //AppUser is linked to User
