@@ -54,7 +54,7 @@ public class PostController {
     public String home(Model model,
                        @RequestParam(required = false) String title,
                        @RequestParam(required = false) String description,
-                       @RequestParam(required = false) String tag,
+                       @RequestParam(required = false) List<String> tag,
                        @RequestParam(required = false) String date,
                        @RequestParam(required = false) Integer minLikes,
                        @RequestParam(required = false) Integer maxLikes) {

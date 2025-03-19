@@ -14,14 +14,14 @@ public interface PostRepository extends CrudRepository<Post, Integer> {
             "JOIN p.tagsPost t " +
             "WHERE (:title IS NULL OR p.title ILIKE CONCAT ('%', :title, '%')) " +
             "AND (:description IS NULL OR p.description ILIKE CONCAT ('%', :description, '%')) " +
-            "AND (:tag IS NULL OR t.name = :tag) " +
+            "AND (:tag IS NULL OR t.name IN :tag) " +
             "AND (:date IS NULL OR p.date = :date) " +
             "AND (:minLikes IS NULL OR (SELECT COUNT(l) FROM p.likedusers l) >= :minLikes) " +
             "AND (:maxLikes IS NULL OR (SELECT COUNT(l) FROM p.likedusers l) <= :maxLikes)")
     List<Post> findByFilter(
             @Param("title") String title,
             @Param("description") String description,
-            @Param("tag") String tag,
+            @Param("tag") List<String> tag,
             @Param("date") LocalDate date,
             @Param("minLikes") Integer minLikes,
             @Param("maxLikes") Integer maxLikes
