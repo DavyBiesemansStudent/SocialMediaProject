@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<div th:replace="~{fragments/head::head}"></div>
+
+<body class="d-flex flex-column min-vh-100">
+<div th:replace="~{fragments/header :: navbar}"></div>
+
+<div class="container py-4">
+  <main th:if="${appUser}">
+    <div class="row justify-content-center">
+      <div class="col-lg-7 col-md-8 col-sm-10">
+        <div class="postCard">
+          <form th:action="@{/settings}" method="post" th:object="${appUser}">
+            <div class="mb-3">
+              <label for="bio" class="form-label">Bio</label>
+              <textarea id="bio" class="form-control" th:field="*{bio}" maxlength="250" rows="5" required></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="profilePictureUrl" class="form-label">Profile Picture URL</label>
+              <input type="text" id="profilePictureUrl" class="form-control" th:field="*{profilePictureUrl}" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <a th:href="@{/userprofile/{id}(id=${appUser.id})}" class="btn btn-secondary">Cancel</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+<footer class="mt-auto">
+  <div th:replace="~{fragments/footer::footer}"></div>
+</footer>
+</body>
+</html>

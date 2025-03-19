@@ -3,12 +3,12 @@ package be.thomasmore.projectsocialmedia.controllers;
 import be.thomasmore.projectsocialmedia.model.AppUser;
 import be.thomasmore.projectsocialmedia.model.Post;
 import be.thomasmore.projectsocialmedia.repositories.AppUserRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.ArrayList;
@@ -21,7 +21,6 @@ public class AppUserController {
 
     @Autowired
     private AppUserRepository appUserRepository;
-
 
     @GetMapping({"/userprofile/{id}", "/userprofile"})
     public String userProfile(Model model, @PathVariable(required = false) Integer id) {
@@ -68,5 +67,33 @@ public class AppUserController {
         model.addAttribute("likedPosts",likedPosts);
 
         return "likedposts";
+    }
+
+    @GetMapping("/settings")
+    public String settings(Model model, Principal principal) {
+        if (principal == null) {
+            return "redirect:/user/login";
+        }
+        AppUser user = appUserRepository.findByUsername(principal.getName());
+        model.addAttribute("appUser", user);
+        return "settings";
+    }
+
+    @PostMapping("/settings")
+    public String updateSettings(@Valid AppUser appUser, BindingResult bindingResult, Principal principal,
+                                 @RequestParam String bio,
+                                 @RequestParam String profilePictureUrl) {
+        if (bindingResult.hasErrors()) {
+            return "settings";
+        }
+
+        //set because the user (principal) is not the same as AppUser
+        //AppUser is linked to User
+        AppUser appuser = appUserRepository.findByUsername(principal.getName());
+        appuser.setBio(bio);
+        appuser.setProfilePictureUrl(profilePictureUrl);
+
+        appUserRepository.save(appuser);
+        return "redirect:/userprofile/" + appuser.getId();
     }
 }

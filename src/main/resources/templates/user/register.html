@@ -19,13 +19,13 @@
                     <!-- Name Input -->
                     <div class="mb-3">
                         <label for="name" class="form-label">Full Name</label>
-                        <input id="name" name="name" class="form-control" th:value="${param.name}" required />
+                        <input id="name" name="name" class="form-control" th:value="${param.name}" maxlength="50" required />
                     </div>
 
                     <!-- Username Input -->
                     <div class="mb-3">
                         <label for="username" class="form-label">Username</label>
-                        <input id="username" name="username" class="form-control" th:value="${param.username}" required />
+                        <input id="username" name="username" class="form-control" th:value="${param.username}" maxlength="30" required />
                     </div>
 
                     <!-- Profile Picture URL Input -->
@@ -37,7 +37,7 @@
                     <!-- Bio Input -->
                     <div class="mb-3">
                         <label for="bio" class="form-label">Bio</label>
-                        <textarea id="bio" name="bio" class="form-control" th:text="${param.bio}" required></textarea>
+                        <textarea id="bio" name="bio" class="form-control" th:text="${param.bio}" maxlength="250" required></textarea>
                     </div>
 
                     <!-- Password Input -->

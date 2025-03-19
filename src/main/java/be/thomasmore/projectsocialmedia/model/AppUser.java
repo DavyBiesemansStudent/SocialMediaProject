@@ -10,6 +10,7 @@ public class AppUser {
     @GeneratedValue(strategy = GenerationType.IDENTITY) //auto increment id (last-used + 1)
     private int id;
 
+    @Column(length = 50)
     private String name;
 
     @Column(length = 250)
@@ -26,6 +27,7 @@ public class AppUser {
     @OneToMany(mappedBy = "appUser")
     private Collection<Comment> comments;
 
+    @Column(length = 30)
     private String username;
 
     public Collection<Post> getLikedposts() {
