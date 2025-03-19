@@ -182,6 +182,7 @@ INSERT INTO comment (comment, app_user_id, post_id) VALUES ('This is comment #2 
 INSERT INTO comment (comment, app_user_id, post_id) VALUES ('This is comment #3 on post 10', 2, 10);
 
 INSERT INTO TAG (name, description, descriptionExtended, img_path) VALUES
+    ('Event', 'Themed events, meetups, and generous rewards', 'Stay informed on current events, posts related to said events, and discussions surrounding events.', '/img/tag-event.jpg'),
     ('Sports', 'Everything related to sport', 'Covers all aspects of sports, including athletes, training tips, and sports news.', '/img/tag-sports.jpg'),
     ('Technology', 'Latest trends and innovations in the tech world', 'Stay updated on the newest gadgets, software, AI advancements, and technological breakthroughs.', '/img/tag-technology.webp'),
     ('Music', 'Everything related to music, from genres to artists', 'Explore music history, artist spotlights, trending genres, and album reviews.', '/img/tag-music.jpg'),
@@ -190,8 +191,8 @@ INSERT INTO TAG (name, description, descriptionExtended, img_path) VALUES
     ('Health', 'Health tips, fitness, and mental well-being', 'Get insights on physical fitness, mental health strategies, nutrition, and overall wellness.', '/img/tag-health.webp'),
     ('Literature', 'Everything written, books, comics and novels', 'Discuss classic literature, modern novels, poetry, and graphic storytelling.', '/img/tag-literature.jpg'),
     ('Film', 'Discussions about movies, shows and everything else video', 'Engage in movie reviews, TV show recommendations, filmmaking techniques, and industry trends.', '/img/tag-film.jpg'),
-    ('Event', 'Themed events, meetups, and generous rewards', 'Stay informed on current events, posts related to said events, and discussions surrounding events.', '/img/tag-event.jpg');
-
+    ('Meme', 'Discussions about memes, internet culture, and viral content', 'Engage in sharing memes, discussing trends, and exploring internet humor.', '/img/tag-meme.webp'),
+    ('Art', 'Discussions about visual art, creativity, and artistic techniques', 'Engage in sharing artwork, discussing artistic processes, and exploring different art styles.', '/img/tag-art.webp');
 
 
 INSERT INTO post_tags_post (posts_id, tags_post_id)
