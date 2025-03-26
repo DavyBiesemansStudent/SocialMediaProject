@@ -3,10 +3,11 @@ package be.thomasmore.projectsocialmedia.controlleradvice;
 import be.thomasmore.projectsocialmedia.model.AppUser;
 import be.thomasmore.projectsocialmedia.repositories.AppUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
+
+import java.security.Principal;
 
 @ControllerAdvice
 public class GlobalControllerAdvice {
@@ -15,14 +16,15 @@ public class GlobalControllerAdvice {
     private AppUserRepository appUserRepository;
 
     @ModelAttribute
-    public void addUserIdToModel(Model model) {
-        //contextholder get's the entire object (username, authority, permissions)
-        //principal get the current users identity (username)
-        String currentUsername = SecurityContextHolder.getContext().getAuthentication().getName();
-        AppUser user = appUserRepository.findByUsername(currentUsername);
-        if (user != null) {
-            model.addAttribute("user", user);
+    public void addUserToModel(Model model, Principal principal) {
+        if (principal != null) {
+            String username = principal.getName();
+            AppUser curUser = appUserRepository.findByUsername(username);
+            if (curUser != null) {
+                model.addAttribute("CurUser", curUser);
+            }
         }
     }
+
 }
 

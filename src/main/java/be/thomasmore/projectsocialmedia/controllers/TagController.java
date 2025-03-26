@@ -32,7 +32,8 @@ public class TagController {
 
         Optional<Tag> tag = tagRepository.findById(id);
         if (tag.isPresent()) {
-            model.addAttribute("tag", tag.get());
+            Tag tagDB = tag.get();
+            model.addAttribute("tag", tagDB);
         }
 
         return "tagdetails";

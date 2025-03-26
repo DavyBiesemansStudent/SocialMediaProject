@@ -74,33 +74,30 @@ public class PostController {
 
     @PostMapping("/likePost")
     public String likePost(@RequestParam Integer postId,
+                           @ModelAttribute("CurUser") AppUser CurUser,
                            Principal principal) {
 
         if (principal == null) {
             return "redirect:/user/login";
         }
 
-        AppUser user = appUserRepository.findByUsername(principal.getName());
-
         Optional<Post> postFromDB = postRepository.findById(postId);
         if (postFromDB.isEmpty()) {
             return "redirect:/feed";
         }
-
-        //get the current post object
         Post post = postFromDB.get();
 
         // Toggle like
-        if (post.getLikedusers().contains(user)) {
-            post.getLikedusers().remove(user);
-            user.getLikedposts().remove(post);
+        if (post.getLikedusers().contains(CurUser)) {
+            post.getLikedusers().remove(CurUser);
+            CurUser.getLikedposts().remove(post);
         } else {
-            post.getLikedusers().add(user);
-            user.getLikedposts().add(post);
+            post.getLikedusers().add(CurUser);
+            CurUser.getLikedposts().add(post);
         }
 
         postRepository.save(post);
-        appUserRepository.save(user);
+        appUserRepository.save(CurUser);
 
         return "redirect:/postdetails/" + postId;
     }
@@ -109,13 +106,12 @@ public class PostController {
     @PostMapping("/addComment")
     public String addComment(@RequestParam String commentText,
                              @RequestParam Integer postId,
+                             @ModelAttribute("CurUser") AppUser CurUser,
                              Principal principal) {
 
         if (principal == null) {
             return "redirect:/user/login";
         }
-
-        AppUser appUser = appUserRepository.findByUsername(principal.getName());
 
         Optional<Post> postFromDB = postRepository.findById(postId);
         if (postFromDB.isEmpty()) {
@@ -126,7 +122,7 @@ public class PostController {
         Comment comment = new Comment();
         comment.setComment(commentText);
         comment.setPost(post);
-        comment.setAppUser(appUser);
+        comment.setAppUser(CurUser);
 
         commentRepository.save(comment);
 

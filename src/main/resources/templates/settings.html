@@ -6,11 +6,11 @@
 <div th:replace="~{fragments/header :: navbar}"></div>
 
 <div class="container py-4">
-  <main th:if="${appUser}">
+  <main th:if="${CurUser}">
     <div class="row justify-content-center">
       <div class="col-lg-7 col-md-8 col-sm-10">
         <div class="postCard">
-          <form th:action="@{/settings}" method="post" th:object="${appUser}">
+          <form th:action="@{/settings}" method="post" th:object="${CurUser}">
             <div class="mb-3">
               <label for="bio" class="form-label">Bio</label>
               <textarea id="bio" class="form-control" th:field="*{bio}" maxlength="250" rows="5" required></textarea>
@@ -20,7 +20,7 @@
               <input type="text" id="profilePictureUrl" class="form-control" th:field="*{profilePictureUrl}" required>
             </div>
             <button type="submit" class="btn btn-primary">Save Changes</button>
-            <a th:href="@{/userprofile/{id}(id=${appUser.id})}" class="btn btn-secondary">Cancel</a>
+            <a th:href="@{/userprofile/{id}(id=${CurUser.id})}" class="btn btn-secondary">Cancel</a>
           </form>
         </div>
       </div>

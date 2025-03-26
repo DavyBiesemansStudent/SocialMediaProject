@@ -2,7 +2,6 @@ package be.thomasmore.projectsocialmedia.controllers;
 
 import be.thomasmore.projectsocialmedia.model.AppUser;
 import be.thomasmore.projectsocialmedia.model.Post;
-import be.thomasmore.projectsocialmedia.repositories.AppUserRepository;
 import be.thomasmore.projectsocialmedia.repositories.PostRepository;
 import be.thomasmore.projectsocialmedia.repositories.TagRepository;
 import jakarta.validation.Valid;
@@ -28,10 +27,8 @@ public class PostEditController {
     @Autowired
     private TagRepository tagRepository;
 
-    @Autowired
-    private AppUserRepository appUserRepository;
 
-    @ModelAttribute("post")
+    @ModelAttribute("post") //Any controller method handling a request will automatically get post in the model
     public Post findPost(@PathVariable(required = false) Integer id){
         if (id == null) {
             return new Post();
@@ -40,13 +37,15 @@ public class PostEditController {
         Optional<Post> post = postRepository.findById(id);
 
         if(post.isPresent()){
-            return post.get();
+            return post.get();      //The returned Post is added to the model under post
         }
         return null;
     }
 
     @GetMapping("/postedit/{id}")
-    public String editPost(Principal principal, Post post, @PathVariable Integer id){
+    public String editPost(Principal principal,
+                           Post post, //Equal to @ModelAttribute("post") Post post. not used since there's only one Post object here
+                           @PathVariable Integer id){
         if (principal == null) {
             return "redirect:/user/login";
         }
@@ -57,7 +56,10 @@ public class PostEditController {
     }
 
     @PostMapping("/postedit/{id}")
-    public String editPost(@PathVariable Integer id, @Valid Post post, BindingResult bindingResult, Principal principal){
+    public String editPost(@PathVariable Integer id,
+                           @Valid Post post,
+                           BindingResult bindingResult,
+                           Principal principal){
         if (principal == null) {
             return "redirect:/user/login";
         }
@@ -73,7 +75,8 @@ public class PostEditController {
     }
 
     @GetMapping("/postcreate")
-    public String createPost(Model model, Principal principal) {
+    public String createPost(Model model,
+                             Principal principal) {
         if (principal == null) {
             return "redirect:/user/login";
         }
@@ -83,7 +86,11 @@ public class PostEditController {
     }
 
     @PostMapping("/postcreate")
-    public String createPost(@Valid Post post, BindingResult bindingResult, Principal principal, Model model) {
+    public String createPost(@Valid Post post,
+                             BindingResult bindingResult,
+                             @ModelAttribute("CurUser") AppUser CurUser,
+                             Model model,
+                             Principal principal) {
         if (principal == null) {
             return "redirect:/user/login";
         }
@@ -97,9 +104,7 @@ public class PostEditController {
             return "postcreate";
         }
 
-        AppUser user = appUserRepository.findByUsername(principal.getName());
-
-        post.setPoster(user);
+        post.setPoster(CurUser);
         post.setDate(LocalDate.now());
         postRepository.save(post);
 

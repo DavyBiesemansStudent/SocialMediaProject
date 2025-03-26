@@ -27,6 +27,7 @@ public class AppUserController {
             return "userprofile";
         }
 
+        // Optional because possible null value. this handles it cleanly (no NullPointerException)
         Optional<AppUser> appUserDB = appUserRepository.findById(id);
         if (appUserDB.isPresent()) {
             AppUser user = appUserDB.get();
@@ -53,46 +54,19 @@ public class AppUserController {
     }
 
     @GetMapping("/likedposts")
-    public String likedPosts(Model model, Principal principal) {
+    public String likedPosts(Model model,
+                             @ModelAttribute("CurUser") AppUser CurUser,
+                             Principal principal) {
         if (principal == null) {
             return "redirect:/user/login";
         }
-        AppUser user = appUserRepository.findByUsername(principal.getName());
 
         //arraylist because you're converting from a collection to a list
-        List<Post> likedPosts = new ArrayList<>(user.getLikedposts());
+        List<Post> likedPosts = new ArrayList<>(CurUser.getLikedposts());
         Collections.reverse(likedPosts);
 
         model.addAttribute("likedPosts",likedPosts);
 
         return "likedposts";
-    }
-
-    @GetMapping("/settings")
-    public String settings(Model model, Principal principal) {
-        if (principal == null) {
-            return "redirect:/user/login";
-        }
-        AppUser user = appUserRepository.findByUsername(principal.getName());
-        model.addAttribute("appUser", user);
-        return "settings";
-    }
-
-    @PostMapping("/settings")
-    public String updateSettings(Principal principal,
-                                 @RequestParam String bio,
-                                 @RequestParam String profilePictureUrl) {
-        if (principal == null) {
-            return "redirect:/user/login";
-        }
-
-        //set because the user (principal) is not the same as AppUser and thus not automatically bound
-        //AppUser is linked to User
-        AppUser appuser = appUserRepository.findByUsername(principal.getName());
-        appuser.setBio(bio);
-        appuser.setProfilePictureUrl(profilePictureUrl);
-
-        appUserRepository.save(appuser);
-        return "redirect:/userprofile/" + appuser.getId();
     }
 }
