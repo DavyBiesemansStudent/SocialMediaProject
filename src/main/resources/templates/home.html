@@ -13,7 +13,7 @@
         <h1 sec:authorize="!isAuthenticated()" style="color: white;">You are not logged in.</h1>
         <a sec:authorize="!isAuthenticated()" th:href="@{user/login}" class="btn btn-secondary btn-lg mt-3">login</a>
 
-        <h1 sec:authorize="isAuthenticated()" th:text="|Hello ${user.name}|" style="color: white;"></h1>
+        <h1 sec:authorize="isAuthenticated()" th:text="|Hello ${CurUser.name}|" style="color: white;"></h1>
         <a sec:authorize="isAuthenticated()" th:href="@{user/logout}" class="btn btn-secondary btn-lg mt-3">logout</a>
         <a th:href="@{/feed}" class="btn btn-primary btn-lg mt-3">Go to Feed</a>
     </div>

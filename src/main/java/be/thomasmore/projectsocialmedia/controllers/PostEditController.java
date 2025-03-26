@@ -68,8 +68,6 @@ public class PostEditController {
             return "postedit";
         }
 
-        //no set because post object is automatically bound and already populated with data
-        //Post is a standalone entity
         postRepository.save(post);
         return "redirect:/postdetails/" + id;
     }
