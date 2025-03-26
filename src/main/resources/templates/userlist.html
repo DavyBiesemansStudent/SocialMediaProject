@@ -6,9 +6,9 @@
 <body class="d-flex flex-column min-vh-100">
 <div th:replace="~{fragments/header :: navbar}"></div>
 
-<div class="container mt-4 flex-grow-1">
-  <h2 class="text-white">User List</h2>
-  <form th:action="@{|/userlist|}">
+<div class="container mt-4">
+  <h2 class="text-white">Profile List</h2>
+  <form th:action="@{/userlist}">
     <div class="input-group gap-2">
       <input type="search" id="keyword" name="keyword" th:value="${param.keyword}" class="form-control rounded-2" placeholder="Search...">
       <button type="submit" class="btn btn-primary rounded-2">Search</button>
@@ -21,7 +21,7 @@
       <a th:href="@{|/userprofile/*{appUsers.id}|}" class="text-decoration-none">
         <div class="user-card-list card p-3 flex-row align-items-center">
           <img th:src="${appUsers.profilePictureUrl}" alt="Profile Picture" class="profile-picture-list rounded-circle me-3">
-          <div class="d-flex flex-column">
+          <div>
             <span class="username-list" th:text="${appUsers.username}"></span>
           </div>
         </div>

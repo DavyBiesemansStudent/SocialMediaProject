@@ -25,7 +25,7 @@
 
                         <button type="submit" class="btn btn-primary" th:disabled="${#authentication.name != post.poster.username}">
                             Save Changes</button>
-                        <a href="/postdetails/{id}" th:href="@{/postdetails/{id}(id=${post.id})}" class="btn btn-secondary">Cancel</a>
+                        <a th:href="@{/postdetails/{id}(id=${post.id})}" class="btn btn-secondary">Cancel</a>
                     </form>
                 </div>
             </div>

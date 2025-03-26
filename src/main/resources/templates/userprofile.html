@@ -6,10 +6,10 @@
 <body class="d-flex flex-column min-vh-100">
 <div th:replace="~{fragments/header :: navbar}"></div>
 
-<div class="container flex-grow-1">
+<div class="container">
     <main class="container" th:object="${appUser}" th:if="${appUser}">
         <div class="row profile-card">
-            <div class="col-12 d-flex justify-content-center align-items-center text-center text-md-start">
+            <div class="col-12 d-flex justify-content-center align-items-center">
                 <img th:src="*{profilePictureUrl}" alt="Profile Picture" class="rounded-circle me-3">
                 <div>
                     <h1 th:text="*{username}"></h1>
@@ -37,7 +37,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title" th:text="${post.title}"></h5>
                                         <p class="mb-0">
-                                            <span th:each="tag : ${post.tagsPost}" th:class="'tag-' + ${tag.name.toLowerCase()}" th:text="|${tag.name} |"></span>
+                                            <span th:each="tag : ${post.tagsPost}" th:class="'tag-' + ${tag.name.toLowerCase()}" th:text="${tag.name}"></span>
                                         </p>
                                     </div>
 

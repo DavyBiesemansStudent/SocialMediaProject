@@ -8,7 +8,7 @@
 <div th:replace="~{fragments/header :: navbar}"></div>
 
 <!-- Main Content -->
-<div class="container d-flex justify-content-center align-items-center mt-5" style="height: 80vh;">
+<div class="container d-flex justify-content-center align-items-center" style="height: 80vh;">
     <div class="text-center">
         <h1 sec:authorize="!isAuthenticated()" style="color: white;">You are not logged in.</h1>
         <a sec:authorize="!isAuthenticated()" th:href="@{user/login}" class="btn btn-secondary btn-lg mt-3">login</a>

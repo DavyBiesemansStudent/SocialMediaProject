@@ -22,6 +22,7 @@
           </div>
           <div class="modal-body">
             <!-- Start of the Form -->
+            <!-- Refers to getmapping with /feed -->
             <form id="filterForm" th:action="@{/feed}" method="get">
               <!-- Title Filter -->
               <div class="mb-3">
@@ -115,9 +116,9 @@
     </div>
 
 
-    <div class="row justify-content-center" >
+    <div class="row">
       <div class="col-12 col-md-4 mb-4" th:each="post : ${posts}">
-        <a th:href="@{|/postdetails/*{post.id}|}" class="text-decoration-none ">
+        <a th:href="@{|/postdetails/*{post.id}|}" class="text-decoration-none">
           <!-- Start of Card -->
           <div class="feedCards card">
             <img th:src="${post.imgPath}" alt="Post Image" class="card-img-top">
@@ -125,7 +126,8 @@
             <div class="card-body">
               <h5 class="card-title" th:text="${post.title}"></h5>
               <p class="mb-0">
-                <span th:each="tag : ${post.tagsPost}" th:class="'tag-' + ${tag.name.toLowerCase()}" th:text="|${tag.name} |"></span>
+                <!-- Span because it keeps them on a single line -->
+                <span th:each="tag : ${post.tagsPost}" th:class="'tag-' + ${tag.name.toLowerCase()}" th:text="${tag.name}"></span>
               </p>
             </div>
 

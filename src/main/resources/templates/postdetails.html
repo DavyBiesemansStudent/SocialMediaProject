@@ -17,7 +17,7 @@
             <span class="postDate" th:text="${#temporals.format(post.date, 'dd-MM-yyyy')}">01-01-2025</span>
           </div>
           <p class="mb-0">
-            <span th:each="tag : ${post.tagsPost}" th:class="'tag-' + ${tag.name.toLowerCase()}" th:text="|${tag.name} |"></span>
+            <span th:each="tag : ${post.tagsPost}" th:class="'tag-' + ${tag.name.toLowerCase()}" th:text="${tag.name}"></span>
           </p>
           <div class="postImage">
             <img th:src="${post.imgPath}" alt="Post Image" class="img-fluid">
@@ -39,12 +39,15 @@
             <div class="d-flex align-items-center">
               <form method="post" th:action="@{/likePost}" class="likeForm">
                 <input type="hidden" name="postId" th:value="${post.id}">
+                <!-- Classappend does not override initial class but adds a new one instead-->
                 <button type="submit" class="btn btn-sm likeButton"
                         th:classappend="${#lists.contains(post.likedusers, user)} ? 'btn-outline-danger' : 'btn-outline-primary'"
                         th:text="${#lists.contains(post.likedusers, user)} ? '❤️ Liked' : '🤍 Like'">
+                  <!-- Changes based on whether the list contains the liked user -->
+                  <!-- .contains is not directly supported by thymeleaf #list.contains is a helper function from thymeleaf-->
                 </button>
               </form>
-              <span class="likeCounter ms-2" th:text="${post.likedusers.size()}">0</span>
+              <span class="likeCounter ms-2" th:text="${post.likedusers.size()}">0</span> <!-- .size is directly built in java so no #lists -->
             </div>
           </div>
 

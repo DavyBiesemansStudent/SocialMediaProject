@@ -5,9 +5,9 @@
 <body class="d-flex flex-column min-vh-100">
 <div th:replace="~{fragments/header :: navbar}"></div>
 
-<div class="container py-4 flex-grow-1">
+<div class="container py-4">
     <main>
-        <div class="row justify-content-center" >
+        <div>
             <div class="special-tags">
                 <h3>Special Tags:</h3>
                 <div class="col-12" th:each="tag : ${tags}" th:if="${tag.name == 'Event'}">

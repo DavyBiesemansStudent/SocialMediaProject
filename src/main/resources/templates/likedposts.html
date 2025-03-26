@@ -5,13 +5,13 @@
 <body class="d-flex flex-column min-vh-100">
 <div th:replace="~{fragments/header :: navbar}"></div>
 
-<div class="container py-4 flex-grow-1">
+<div class="container py-4">
   <main>
     <h2 style="color: white;">Your Liked Posts:</h2>
     <h1 th:if="${#lists.isEmpty(likedPosts)}" style="color: white" class="text-center" >You have not liked any posts yet</h1>
 
     <div th:unless="${#lists.isEmpty(likedPosts)}">
-      <div class="row justify-content-center" >
+      <div class="row">
         <div class="col-12 col-md-4 mb-4" th:each="post : ${likedPosts}">
           <a th:href="@{|/postdetails/*{post.id}|}" class="text-decoration-none">
             <div class="feedCards card">
@@ -20,7 +20,7 @@
               <div class="card-body">
                 <h5 class="card-title" th:text="${post.title}"></h5>
                 <p class="mb-0">
-                  <span th:each="tag : ${post.tagsPost}" th:class="'tag-' + ${tag.name.toLowerCase()}" th:text="|${tag.name} |"></span>
+                  <span th:each="tag : ${post.tagsPost}" th:class="'tag-' + ${tag.name.toLowerCase()}" th:text="${tag.name}"></span>
                 </p>
               </div>
 
